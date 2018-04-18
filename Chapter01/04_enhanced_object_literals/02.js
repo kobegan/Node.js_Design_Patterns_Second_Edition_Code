@@ -9,4 +9,4 @@ module.exports = {
   }
 };
 
-console.log(module.exports);
+console.dir(module.exports);
