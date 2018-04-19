@@ -7,7 +7,7 @@ function Logger(name) {
 
 Logger.prototype.log = function(message) {
   this.count++;
-  console.log('[' + this.name + '] ' + message);
+  console.log('[' + this.name + '] ' + message + ' count:' + this.count);
 };
-
+//let logger =
 module.exports = new Logger('DEFAULT');

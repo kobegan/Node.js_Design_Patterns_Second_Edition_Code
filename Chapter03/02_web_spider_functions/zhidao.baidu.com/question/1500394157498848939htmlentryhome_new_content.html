@@ -1,0 +1,2094 @@
+ <!DOCTYPE html>
+<!--STATUS OK-->
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<meta http-equiv="content-type" content="text/html;charset=gbk" />
+<meta property="wb:webmaster" content="3aababe5ed22e23c" />
+<meta name="referrer" content="always" />
+<title>�Ű�ѡ����һ�ι����쵼����˭��_�ٶ�֪��</title>
+<link rel="shortcut icon" href="//www.baidu.com/favicon.ico?t=20171027" type="image/x-icon" />
+<link rel="icon" sizes="any" mask href="//www.baidu.com/img/baidu.svg" />
+
+<script>
+    window.alogObjectConfig = {
+        product: '102',
+        page: '102_3', 
+        monkey_page: 'zhidao-ques',
+        speed_page: '3',
+        speed: {
+            sample: '0.02'
+        },
+        monkey: {
+            sample: '0.01'
+        },
+        exception: { 
+            sample: '0.01'
+        },
+        feature: {
+            sample: '0.01'
+        },
+        cus: {
+            sample: '0.01',
+            custom_metrics: ['c_sbox', 'c_menu', 'c_ask', 'c_best']
+        },
+        csp: {
+            sample: '0.02',
+            'default-src': [
+                {match: '*bae.baidu.com', target: 'Accept,Warn'},
+                {match: '*.baidu.com,*.bdstatic.com,*.bdimg.com,localhost,*.hao123.com,*.hao123img.com', target: 'Accept'},
+                {match: /^(127|172|192|10)(\.\d+){3}$/, target: 'Accept'},
+                {match: '*', target: 'Accept,Warn'}
+            ]
+        }
+    };
+ 
+    void function(a,b,c,d,e,f,g){a.alogObjectName=e,a[e]=a[e]||function(){(a[e].q=a[e].q||[]).push(arguments)},a[e].l=a[e].l||+new Date,d="https:"===a.location.protocol?"https://fex.bdstatic.com"+d:"http://fex.bdstatic.com"+d;var h=!0;if(a.alogObjectConfig&&a.alogObjectConfig.sample){var i=Math.random();a.alogObjectConfig.rand=i,i>a.alogObjectConfig.sample&&(h=!1)}h&&(f=b.createElement(c),f.async=!0,f.src=d+"?v="+~(new Date/864e5)+~(new Date/864e5),g=b.getElementsByTagName(c)[0],g.parentNode.insertBefore(f,g))}(window,document,"script","/hunter/alog/alog.min.js","alog"),void function(){function a(){}window.PDC={mark:function(a,b){alog("speed.set",a,b||+new Date),alog.fire&&alog.fire("mark")},init:function(a){alog("speed.set","options",a)},view_start:a,tti:a,page_ready:a}}();
+    void function(n){var o=!1;n.onerror=function(n,e,t,c){var i=!0;return!e&&/^script error/i.test(n)&&(o?i=!1:o=!0),i&&alog("exception.send","exception",{msg:n,js:e,ln:t,col:c}),!1},alog("exception.on","catch",function(n){alog("exception.send","exception",{msg:n.msg,js:n.path,ln:n.ln,method:n.method,flag:"catch"})})}(window);
+</script>
+
+<script>
+	!function(document, window){
+		var log = {
+			list: [],
+			host: 'https://' + location.host + '/api/httpscheck',
+			log: function(param) {
+				var a = [];
+		    	for(var k in param) {
+		    		a.push(k + '=' + param[k]);
+		    	}
+		    	var msg = a.join('&');
+		    	if(~this.list.indexOf(msg)){
+		    		return;
+		    	}
+		    	this.list.push(msg);
+		  		var img = new Image();
+		    	var key = '_ik_log_' + (Math.random()*2147483648 ^ 0).toString(36);
+		    	window[key] = img;
+		    		img.onload = img.onerror = img.onabort = function() {
+		        		img.onload = img.onerror = img.onabort = null;
+		        		window[key] = null;
+			    		img = null;
+		    	};
+		  		img.src = this.host + '?' + msg;
+			}
+		};
+
+		function HTTPSWarningLog(){
+			this.selector = [
+				'link',
+				'script',
+				'img',
+				'embed',
+				'iframe'
+			];
+			this.warningCounter = 0;
+			this.init();
+		};
+
+		HTTPSWarningLog.prototype = {
+			init: function(){
+				this.fetch();
+			},
+
+			fetch: function(){
+				for(var tags = this.selector, i =0, len = tags.length; i < len;i++) {
+					this.getTag(tags[i]);
+				}
+			},
+
+			getTag: function(tag) {
+				var domList = document.getElementsByTagName(tag);
+				if(!domList.length) {
+					return;
+				}
+				for(var i = 0,len = domList.length;i<len;i++) {
+					var el = domList[i];
+					var url = el.getAttribute(el.tagName==='LINK' ? 'href' : 'src');
+                    if(el.getAttribute('rel') === 'canonical') {
+                        continue;
+                    }
+					if(url && 'https:' === location.protocol && !url.indexOf('http:')){
+						this.sendLog(el, el.tagName.toLowerCase(),url);
+						this.warningCounter++;
+					}
+				}
+			},
+			
+			sendLog: function(el, type, url){
+				log.log({
+					url: location.href,
+					wtype: type,
+					wurl: url
+				});
+			}
+		};
+
+		function domReady(fn){
+		    if(document.addEventListener) {
+		        document.addEventListener('DOMContentLoaded', function() {
+		            document.removeEventListener('DOMContentLoaded',arguments.callee, false);
+		            fn();
+		        }, false);
+		    }else if(document.attachEvent) {
+		        document.attachEvent('onreadystatechange', function() {
+		            if(document.readyState == 'complete') {
+		                document.detachEvent('onreadystatechange', arguments.callee);
+		                fn();
+		            }
+		        });
+		    }
+		};
+
+		domReady(function(){
+			new HTTPSWarningLog();
+			for(var i=1; i<6; i++) {
+				!function(i){
+					setTimeout(function(){
+						new HTTPSWarningLog();
+					}, i*i*i*1000);
+				}(i);
+			}
+		});
+	}(document, window);
+</script>
+
+<meta itemprop="dateUpdate" content="2018-04-19 07:18:57" />
+<meta itemprop="datePublished" content="2018-04-19 07:02:52" />
+<meta itemprop="dateLatestReply" content="2018-04-19 15:08:16" />
+
+<script type="text/javascript">
+			!function(){var n={},t={};n.context=function(n,e){var i=arguments.length;if(i>1)t[n]=e;else if(1==i){if("object"!=typeof n)return t[n];for(var o in n)n.hasOwnProperty(o)&&(t[o]=n[o])}},"F"in window||(window.F=n)}();;
+			
+            
+																																							
+			F.context('user', {"isLogin":"0","isRealName":"","stoken":"","name":"","imId":"","id":"","wealth":"","gradeIndex":"","isMavin":""});
+			F.context('user')['internalAdmin'] = null;
+
+							F.context('defaultQuery', '{"title":"","value":""}');
+									
+			            F.context('isQuality', false);
+            F.context('now', 1524136773);
+		</script>
+<script>F.context('sysTaskAutoInit', 1);</script>
+
+<script type="text/javascript">
+    	var dontTriggerPrompt = true;
+        F.context('page',{
+        	isAdopted: '0'
+            ,adsAll:{
+                adsEids: []
+            }
+            ,misAsk: '0'
+            ,delAsk: '0'
+            ,isLocked: '0'
+            ,isReplyLocked: '0'
+            ,isFromWap: "0"
+            ,cid: '973'
+            ,cidTop: '84'
+            ,cidMid: '973'
+            ,qid: '1500394157498848939'
+            ,tags: 'ʱ������'
+            ,title: '�Ű�ѡ����һ�ι����쵼����˭��'
+            ,giveScore: '0'
+            ,encodeUid: 'c8304069236f25705e790d12'
+                        ,uid: '302854344'
+            ,createTime: '1524092572'
+            ,imId: 'c830636e23567556424c516670420d12'
+            ,passPhoto: '0'
+                                    ,rpRecommand: 'false'                        ,rankFile: '0'
+                                    ,con: ''
+                                    ,answerNum: '1'
+            ,isView: '1'
+            ,isGetWealth:'0'
+                        ,pgcArr: [790,791,792,794,795]
+            ,isCompanyIask: '0'
+            ,bdplayer:''
+        });
+
+        F.context('user')['internalAdmin'] = null;
+
+                F.context('answers', {});
+        F.context('relateWords', {});
+                F.context('newbest', '1');
+                        F.context('cmsTopic', [
+                                    {
+                'url': 'http:\/\/zhidao.baidu.com\/s\/qinliugan.html',
+                'title': 'H7N9�����в���������',
+                'qid': '538944731,538944974,538945159,538945410,538945640,538945806,538946023,538947972,538948119,538948841,538948985,538949170,538949278,538949607,538951811,538952044,538952289,539260208,539271130,539272340,539272652,539272848,539273004,538758680,537145971,537481975,537482138,537491741,537496345,537145971,539271582,539310838,96016332,16608956,16608956,534580619',
+                'expert': ''
+            },
+                                                {
+                'url': 'http:\/\/zhidao.baidu.com\/s\/wowen18.html',
+                'title': '��ͳҽѧ����������',
+                'qid': '',
+                'expert': '������ҽ����,���������,�ޱ�����'
+            },
+                                                {
+                'url': 'http:\/\/zhidao.baidu.com\/s\/wowen17.html',
+                'title': '�������Ļ�����������å��Ҳ���£�',
+                'qid': '',
+                'expert': '��ٵ�һ������'
+            },
+                                                {
+                'url': 'http:\/\/zhidao.baidu.com\/topic\/zhichangtiaocao\/index.html',
+                'title': '����ǰ�ض�8������',
+                'qid': '530550652,530550695,530550746,530550777,530550821,530550859,530550898,530550937',
+                'expert': ''
+            },
+                                                {
+                'url': 'http:\/\/zhidao.baidu.com\/topic\/zhichangmianshi\/index.html',
+                'title': 'HR�����������������������',
+                'qid': '529252350,529252523,529252831,529253040,529253301,529253429,529256645,529256979,529257198,529257285',
+                'expert': ''
+            },
+                                                {
+                'url': 'http:\/\/zhidao.baidu.com\/s\/wowen16.html',
+                'title': '����������ഺ�����ڽ���',
+                'qid': '',
+                'expert': '��������������'
+            },
+                                                {
+                'url': 'http:\/\/zhidao.baidu.com\/s\/wowen16.html',
+                'title': '����޽���ഺ�����ڽ���',
+                'qid': '',
+                'expert': '�������������'
+            },
+                                                {
+                'url': 'http:\/\/zhidao.baidu.com\/s\/wowen15.html?fr=qbzt',
+                'title': '�������ְ���е������ɻ�',
+                'qid': '',
+                'expert': '������ѯ����'
+            },
+                                                {
+                'url': 'http:\/\/zhidao.baidu.com\/s\/wowen15.html?fr=qbzt',
+                'title': '�������Ů��ְ���ɻ�',
+                'qid': '',
+                'expert': 'ְ������'
+            },
+                                                {
+                'url': 'http:\/\/zhidao.baidu.com\/s\/wowen14.html?fr=qbzt',
+                'title': '������Ʊ������������Ʊ�ؼң�',
+                'qid': '',
+                'expert': 'peijiyang_pku'
+            },
+                                                {
+                'url': 'http:\/\/zhidao.baidu.com\/s\/jiaogui.html?fr=qbzt',
+                'title': 'Ȩ�����2013�ݿ��¹�',
+                'qid': '496005611,105728210',
+                'expert': ''
+            },
+                                                {
+                'url': 'http:\/\/zhidao.baidu.com\/topic\/shi\/index.html?fr=qbzt',
+                'title': '�������������Խ���',
+                'qid': '510380393,510380025,510380524,510380639,510380685,510380918,510381072,510380301',
+                'expert': ''
+            },
+                                                {
+                'url': 'http:\/\/zhidao.baidu.com\/s\/wowen13.html?fr=qbzt',
+                'title': '���ܾ��������������ݿ��¹�',
+                'qid': '',
+                'expert': '���ܾ�������'
+            },
+                                                {
+                'url': 'http:\/\/zhidao.baidu.com\/s\/wowen13.html?fr=qbzt',
+                'title': '���ܾ����ڴ�������½���',
+                'qid': '',
+                'expert': '���ܾ�����'
+            },
+                                                {
+                'url': 'http:\/\/zhidao.baidu.com\/s\/wowen12.html?fr=qbzt',
+                'title': '������������',
+                'qid': '',
+                'expert': '������ƺ���'
+            },
+                                                {
+                'url': 'http:\/\/zhidao.baidu.com\/s\/wowen12.html?fr=qbzt',
+                'title': 'κ���ƽ��֤ȯͶ��',
+                'qid': '',
+                'expert': '֤ȯר��κ����'
+            },
+                                                {
+                'url': 'http:\/\/zhidao.baidu.com\/s\/wowen06.html?fr=qbzt',
+                'title': '��������ʦ���㾫�ͻ���',
+                'qid': '',
+                'expert': 'lafasojyr'
+            },
+                                                {
+                'url': 'http:\/\/zhidao.baidu.com\/topic\/kuaidu\/suhuaji\/index.html?fr=qbzt',
+                'title': '���ʳ�ﺬ�ܻ�����',
+                'qid': '499771676,274675532,273938276,275181078,274282140,499772730,275226786,274536152,282757232,274210910,275395808,499772593,275355018,274093929',
+                'expert': ''
+            },
+                                                {
+                'url': 'http:\/\/zhidao.baidu.com\/topic\/kuaidu\/youjia\/index.html?fr=qbzt',
+                'title': '�ͼ��������ǽ�',
+                'qid': '7701062,7720360,23590745,239386624,302573038,218721231,337321559',
+                'expert': ''
+            },
+                                                {
+                'url': 'http:\/\/zhidao.baidu.com\/topic\/kuaidu\/2012usa\/index.html?fr=qbzt',
+                'title': '������ͳ�����ѡ������',
+                'qid': '494863184,494863014,494869926,494869853,494868987',
+                'expert': ''
+            },
+                                                {
+                'url': 'http:\/\/zhidao.baidu.com\/topic\/Chicken\/index.html?fr=qbzt',
+                'title': '45�켦�ܲ��ܳ�',
+                'qid': '503005578,503006139,503006460,503006854,503007374,503007374',
+                'expert': ''
+            },
+                                                {
+                'url': 'http:\/\/zhidao.baidu.com\/topic\/1942\/index.html?fr=qbzt',
+                'title': '��֪��1942��',
+                'qid': '502766042,502766042,502647814,502647814,502777253,502776800,502650170,502650170',
+                'expert': ''
+            },
+                                                {
+                'url': 'http:\/\/zhidao.baidu.com\/topic\/jiehuo\/jiankangyaoyan\/index.html?fr=qbzt',
+                'title': '��������֪���',
+                'qid': '178807906,334055366,498402753,291937633,209426382,414548424,7540625,222613405,498406267,498408474,109760622,388525641',
+                'expert': ''
+            },
+                                                {
+                'url': 'http:\/\/www.baidu.com\/search\/zhidao\/jingshenbing\/index.html?fr=qbzt',
+                'title': '��Ҷ��в�',
+                'qid': '492345830,491605430,492350128,492350240,492350299,281444990,492440880,489745109,492443590,492443722',
+                'expert': ''
+            },
+                                                {
+                'url': 'http:\/\/www.baidu.com\/search\/zhidao\/gangnamstyle\/index.html?fr=qbzt',
+                'title': '����Style��ĺܿ�ѧ',
+                'qid': '478958350,487057430,483904315,485109741,487057528,485109517,487057485,487057395,487057395,487057363,480719567',
+                'expert': ''
+            },
+                                                {
+                'url': 'http:\/\/www.baidu.com\/search\/zhidao\/bing\/index.html?fr=qbzt',
+                'title': '��ʵ�ⶼ���ǲ�',
+                'qid': '480816980,480792024,481137959,480812943,480813792',
+                'expert': ''
+            },
+                                                {
+                'url': 'http:\/\/www.baidu.com\/search\/zhidao\/aizheng\/index.html?fr=qbzt',
+                'title': '��Ҳ��ð�֢��',
+                'qid': '328576004,480213867,480213973,480218158,480232828',
+                'expert': ''
+            },
+                                                {
+                'url': 'http:\/\/www.baidu.com\/search\/zhidao\/2012gongfu\/index.html?fr=qbzt',
+                'title': '������֪����',
+                'qid': '475780308,473798866,475780429,473806239,475780510,473800706,475780712,475782468,475780619,473801366',
+                'expert': ''
+            },
+                                                {
+                'url': 'http:\/\/zhidao.baidu.com\/s\/wowen11.html?fr=qbzt',
+                'title': 'Ҧ����ҽ�������｡��',
+                'qid': '',
+                'expert': 'Ҧ���岩ʿ'
+            },
+                                                {
+                'url': 'http:\/\/zhidao.baidu.com\/s\/wowen11.html?fr=qbzt',
+                'title': '������רҵ������Ӫ��',
+                'qid': '',
+                'expert': '����Ӫ��'
+            },
+                                                {
+                'url': 'http:\/\/zhidao.baidu.com\/s\/wowen10.html?fr=qbzt',
+                'title': '����̸Զ�밮���µ���',
+                'qid': '',
+                'expert': '֪����������'
+            },
+                                                {
+                'url': 'http:\/\/zhidao.baidu.com\/s\/wowen08.html?fr=qbzt',
+                'title': '�Ź���������չ�ϵ',
+                'qid': '',
+                'expert': '���Ժ�Ź���'
+            },
+                                                {
+                'url': 'http:\/\/zhidao.baidu.com\/s\/wowen06.html?fr=qbzt',
+                'title': 'СP��ʦ�����ױ����',
+                'qid': '',
+                'expert': 'yokaСP��ʦ'
+            },
+                                                {
+                'url': 'http:\/\/zhidao.baidu.com\/s\/wowen06.html?fr=qbzt',
+                'title': '÷����ʦ������������',
+                'qid': '',
+                'expert': 'lafasoml'
+            },
+                                                {
+                'url': 'http:\/\/zhidao.baidu.com\/s\/wowen06.html?fr=qbzt',
+                'title': '������������������ʴ�',
+                'qid': '',
+                'expert': 'lafasolj'
+            },
+                                                {
+                'url': 'http:\/\/zhidao.baidu.com\/s\/wowen05.html?fr=qbzt',
+                'title': '���ܾ��������ݵ�Ӱ',
+                'qid': '',
+                'expert': 'yinengjing2013'
+            },
+                                                {
+                'url': 'http:\/\/zhidao.baidu.com\/s\/wowen05.html?fr=qbzt',
+                'title': '��������ɽ���ص�Ӱ',
+                'qid': '',
+                'expert': 'daoyanzls'
+            },
+                                                {
+                'url': 'http:\/\/zhidao.baidu.com\/s\/wowen05.html?fr=qbzt',
+                'title': '����ɢ��̸��ʳ',
+                'qid': '',
+                'expert': 'wysr2012'
+            },
+                                                {
+                'url': 'http:\/\/zhidao.baidu.com\/s\/wowen04.html?fr=qbzt',
+                'title': '���ר����Ծ��̸���',
+                'qid': '',
+                'expert': 'lyer2013bd'
+            },
+                                                {
+                'url': 'http:\/\/zhidao.baidu.com\/s\/wowen04.html?fr=qbzt',
+                'title': '����������÷���в�',
+                'qid': '',
+                'expert': 'ym2013bd'
+            },
+                                                {
+                'url': 'http:\/\/zhidao.baidu.com\/topic\/muru\/index.html?fr=qbzt',
+                'title': '��������ĵ�8������',
+                'qid': '526309070,526865300,526865300,526308815,526865218,526865157,526865101,526865101,526309710,526865031',
+                'expert': ''
+            },
+                                                {
+                'url': 'http:\/\/zhidao.baidu.com\/s\/wowen03.html?fr=qbzt',
+                'title': '����ר�������ɽ̽���',
+                'qid': '',
+                'expert': 'wangyousong7'
+            },
+                                                {
+                'url': 'http:\/\/zhidao.baidu.com\/s\/wowen03.html?fr=qbzt',
+                'title': '����һ���㽡��Ӫ��',
+                'qid': '',
+                'expert': 'guzhongyi'
+            },
+                                                {
+                'url': 'http:\/\/zhidao.baidu.com\/s\/wowen03.html?fr=qbzt',
+                'title': '�����������ؾ�',
+                'qid': '',
+                'expert': 'lixiangzslx'
+            },
+                                                {
+                'url': 'http:\/\/zhidao.baidu.com\/s\/zhishilingxiu02.html?fr=qbzt',
+                'title': '��Ѫ�ܲ�ר�Ҽ����̸��ʹ',
+                'qid': '',
+                'expert': 'jiayuhe7'
+            },
+                                                {
+                'url': 'http:\/\/zhidao.baidu.com\/s\/zhishilingxiu02.html?fr=qbzt',
+                'title': '����ר����춡̸��ʹ',
+                'qid': '',
+                'expert': 'xianghongd3'
+            },
+                                                {
+                'url': 'http:\/\/zhidao.baidu.com\/s\/zhishilingxiu01.html?fr=qbzt',
+                'title': '����СV̸ְ������ѧ',
+                'qid': '',
+                'expert': 'СV2013'
+            },
+                                                {
+                'url': 'http:\/\/zhidao.baidu.com\/s\/zhishilingxiu01.html?fr=qbzt',
+                'title': '���ӽ�˵��ҵ',
+                'qid': '',
+                'expert': '���ӽ�2012'
+            },
+                                                {
+                'url': 'http:\/\/zhidao.baidu.com\/s\/wowen08.html?fr=qbzt',
+                'title': '������̸���㵺����',
+                'qid': '',
+                'expert': 'zshaozhong2012'
+            },
+                                                {
+                'url': 'http:\/\/zhidao.baidu.com\/s\/wowen07.html?fr=qbgl',
+                'title': '������̸Ӥ�׶�����',
+                'qid': '',
+                'expert': '����ҽ��������'
+            },
+                                                {
+                'url': 'http:\/\/zhidao.baidu.com\/s\/zhishilingxiu02.html?fr=qbzt',
+                'title': '����Ů������ݺ̸��ʹ',
+                'qid': '',
+                'expert': 'yuyingjzk'
+            },
+                                                {
+                'url': 'http:\/\/zhidao.baidu.com\/s\/zhishilingxiu01.html?fr=qbzt',
+                'title': 'Ѧ����̸��ʹͶ��',
+                'qid': '',
+                'expert': 'Ѧ����2012'
+            },
+                                                {
+                'url': 'http:\/\/zhidao.baidu.com\/s\/wowen09.html?fr=qbgl',
+                'title': '֣Ԩ����ͯ����ͯ��',
+                'qid': '',
+                'expert': '����֣Ԩ��'
+            },
+                                                {
+                'url': 'http:\/\/zhidao.baidu.com\/s\/maya.html?fr=qbgl',
+                'title': '2012����ĩ������',
+                'qid': '384640140,193245477,62563072,306563588,158114723,409478947,12992979,129335529,84523086,13774477,161887534',
+                'expert': ''
+            }
+                                ]);
+                
+        F.context('isForAnswerHq', '0');
+        F.context('isForceAnswer', '0');
+
+    </script>
+
+<!--[if lte IE 8]>
+<script>
+                (function(){
+                    var e="abbr,article,aside,audio,canvas,datalist,details,dialog,eventsource,figure,footer,header,hgroup,mark,menu,meter,nav,output,progress,section,time,video".split(","),
+                    i=e.length;
+                    while(i--){document.createElement(e[i])}
+                 })();
+            </script>
+<![endif]-->
+<link rel="stylesheet" type="text/css" href="https://iknowpc.bdimg.com/static/common/pkg/common.3fe1412.css" /><link rel="stylesheet" type="text/css" href="https://iknowpc.bdimg.com/static/common/widget/header-metis/header.c851cfb.css" /><link rel="stylesheet" type="text/css" href="https://iknowpc.bdimg.com/static/question/widget/top-nav-bar/top-nav-bar.d434cb6.css" /><link rel="stylesheet" type="text/css" href="https://iknowpc.bdimg.com/static/question/pkg/aio.ab66789.css" /><link rel="stylesheet" type="text/css" href="https://iknowpc.bdimg.com/static/question/widget/read-opt/img-preview/preview.c4405d5.css" /><link rel="stylesheet" type="text/css" href="https://iknowpc.bdimg.com/static/question/widget/bottom-union/bottom-union.e6e19de.css" /><link rel="stylesheet" type="text/css" href="https://iknowpc.bdimg.com/static/question/widget/mask/mask.a8f442e.css" /><link rel="stylesheet" type="text/css" href="https://iknowpc.bdimg.com/static/question/widget/view/accusation/accusation.febcf18.css" /><link rel="stylesheet" type="text/css" href="https://iknowpc.bdimg.com/static/common/widget/upgrade-tips/upgrade-tips.02cec46.css" /></head>
+
+<script> alog('speed.set', 'ht', +new Date()); </script>
+
+<body class="layout-center has-menu">
+
+<div id="userbar" class="userbar userbar-renew" data="">
+<ul class="aside-list">
+<li>
+<a href="http://www.baidu.com/" class="toindex">�ٶ���ҳ</a>
+</li>
+<li><a rel="nofollow" alog-alias="usrbar-login" href="javascript:;" id="userbar-login" log="type:2026,pname:account,mod:login,action:show,pos:pop">��¼</a></li>
+<li><a rel="nofollow" alog-alias="usrbar-reg" id="userbar-reg" href="https://passport.baidu.com/v2/?reg&tpl=ik&color=green&u=" target="_blank">ע��</a></li>
+<li class="shop-entrance">
+<a href="/shop" title="֪���̳�" log="type:2026,pos:top-right,target:shop-entrance">�̳�<i class="i-house" style="display: none;"></i></a>
+<span class="lucky-try"></span>
+</li>
+</ul>
+</div>
+
+
+<div class="head-wrap">
+<hr class="divider">
+<header id="header" class="container">
+
+<div id="search-box" class="search-box-new line">
+<ul class="channel grid">
+<li><a log="sc_pos:c_baidu" rel="nofollow" href="http://www.baidu.com/">��ҳ</a></li>
+<li><a log="sc_pos:c_news" rel="nofollow" href="http://news.baidu.com/">����</a></li>
+<li><a log="sc_pos:c_tieba" rel="nofollow" href="http://tieba.baidu.com/">����</a></li><li><strong>֪��</strong></li><li><a log="sc_pos:c_mp3" rel="nofollow" href="http://music.baidu.com/">����</a></li><li><a log="sc_pos:c_pic" rel="nofollow" href="http://image.baidu.com/">ͼƬ</a></li>
+<li><a log="sc_pos:c_video" rel="nofollow" href="http://v.baidu.com/">��Ƶ</a></li><li><a log="sc_pos:c_map" rel="nofollow" href="http://map.baidu.com/">��ͼ</a></li><li><a log="sc_pos:c_doc" rel="nofollow" href="http://wenku.baidu.com/">�Ŀ�</a></li>
+<li><a log="sc_pos:c_more" href="http://www.baidu.com/more/">����&raquo;</a></li>
+</ul>
+<div class="search-block clearfix">
+<div class="search-cont clearfix">
+<a class="logo" href="/" title="�ٶ�֪��"></a>
+<form action="/search" name="search-form" method="get" id="search-form-new" class="search-form">
+<input class="hdi" id="kw" maxlength="256" tabindex="1" size="46" name="word" value="" autocomplete="off" />
+<button alog-action="g-search-anwser" type="submit" id="search-btn" hidefocus="true"  tabindex="2" class="btn-global">������</button>
+<a href="#" alog-action="g-i-ask" class="i-ask-link" id="ask-btn-new">��Ҫ����</a>
+</form>
+</div>
+</div>
+</div>
+<script>
+                    // ���������ʱ����
+                    alog && alog('speed.set', 'c_sbox', +new Date); alog.fire && alog.fire("mark");
+                </script>
+
+</header>
+</div>
+
+<div class="nav-menu-container" id="j-nav-menu-container">
+<div class="nav-show-control">
+<div class="nav-menu-layout">
+<div class="nav-menu line">
+<div class="nav-menu-content container">
+<div class="content-box">
+<div class="menu-item menu-item-index">
+<a class="menu-title " href="/">
+��ҳ</a>
+</div>
+<div class="menu-item-box">
+<div class="menu-item menu-item-cat">
+<a class="menu-title " href="/list?fr=daohang" target="_blank">
+����</a>
+<div class="menu-content">
+<ul class="menu-sub-list">
+<li class="menu-sub-item-wp">
+<a class="menu-sub-item" href="/list?fr=daohang" target="_blank" target="_blank">
+ȫ������</a>
+</li>
+<li class="menu-sub-item-wp">
+<a class="menu-sub-item" href="/list?cid=101&fr=daohang" target="_blank" target="_blank">
+���ý���</a>
+</li>
+<li class="menu-sub-item-wp">
+<a class="menu-sub-item" href="/list?cid=102&fr=daohang" target="_blank" target="_blank">
+��ҵ����</a>
+</li>
+<li class="menu-sub-item-wp">
+<a class="menu-sub-item" href="/list?cid=103&fr=daohang" target="_blank" target="_blank">
+���ɷ���</a>
+</li>
+<li class="menu-sub-item-wp">
+<a class="menu-sub-item" href="/list?cid=104&fr=daohang" target="_blank" target="_blank">
+�������</a>
+</li>
+<li class="menu-sub-item-wp">
+<a class="menu-sub-item" href="/list?cid=105&fr=daohang" target="_blank" target="_blank">
+��ѧ����</a>
+</li>
+<li class="menu-sub-item-wp">
+<a class="menu-sub-item" href="/list?cid=106&fr=daohang" target="_blank" target="_blank">
+��������</a>
+</li>
+<li class="menu-sub-item-wp">
+<a class="menu-sub-item" href="/list?cid=107&fr=daohang" target="_blank" target="_blank">
+�����˶�</a>
+</li>
+<li class="menu-sub-item-wp">
+<a class="menu-sub-item" href="/list?cid=108&fr=daohang" target="_blank" target="_blank">
+�Ļ�����</a>
+</li>
+<li class="menu-sub-item-wp">
+<a class="menu-sub-item" href="/list?cid=109&fr=daohang" target="_blank" target="_blank">
+��������</a>
+</li>
+<li class="menu-sub-item-wp">
+<a class="menu-sub-item" href="/list?cid=110&fr=daohang" target="_blank" target="_blank">
+��������</a>
+</li>
+<li class="menu-sub-item-wp">
+<a class="menu-sub-item" href="/list?cid=111&fr=daohang" target="_blank" target="_blank">
+��������</a>
+</li>
+<li class="menu-sub-item-wp">
+<a class="menu-sub-item" href="/list?cid=113&fr=daohang" target="_blank" target="_blank">
+��������</a>
+</li>
+<li class="menu-sub-item-wp">
+<a class="menu-sub-item" href="/list?cid=114&fr=daohang" target="_blank" target="_blank">
+�������</a>
+</li>
+<li class="menu-sub-item-wp">
+<a class="menu-sub-item" href="/list?cid=115&fr=daohang" target="_blank" target="_blank">
+ҽ������</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="menu-item menu-item-lanmu">
+<a class="menu-title" href="javascript:;">
+��ѡ</a>
+<div class="menu-content">
+<ul class="menu-sub-list">
+<li class="menu-sub-item-wp">
+<a class="menu-sub-item column-sub-item" href="/special/column?fr=daohang" target="_blank">
+֪��ר��</a>
+</li>
+<li class="menu-sub-item-wp">
+<a class="menu-sub-item" href="/daily?fr=daohang" target="_blank">
+֪���ձ�</a>
+</li>
+<li class="menu-sub-item-wp">
+<a class="menu-sub-item" href="/bigdata/view" target="_blank">
+֪��������</a>
+</li>
+<li class="menu-sub-item-wp">
+<a class="menu-sub-item" href="/culture/index?fr=daohang" target="_blank">
+֪������</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="menu-item menu-item-user">
+<a class="menu-title" href="javascript:;">
+�û�<div class="menu-title-icon">
+<i class="iknow-icons">&#xe715;</i>
+</div>
+</a>
+<div class="menu-content">
+<ul class="menu-sub-list">
+<li class="menu-sub-itemline-wp">
+<a class="menu-sub-item metis-sub-item" href="/home/partnerhome?fr=daohang" target="_blank">
+֪���ϻ��ˣ��ڲ⣩<div class="menu-title-icon">
+<i class="iknow-icons">&#xe715;</i>
+</div>
+</a>
+</li>
+<li class="menu-sub-item-wp">
+<a class="menu-sub-item" href="/uteam?fr=daohang" target="_blank">
+֥����</a>
+</li>
+<li class="menu-sub-item-wp">
+<a class="menu-sub-item" href="/user/admin?fr=daohang" target="_blank">
+֥�齫</a>
+</li>
+<li class="menu-sub-item-wp">
+<a class="menu-sub-item" href="/hangjia?fr=daohang" target="_blank">
+֪���м�</a>
+</li>
+<li class="menu-sub-item-wp">
+<a class="menu-sub-item" href="/daily/authorcenter?fr=daohang" target="_blank">
+�ձ�����</a>
+</li>
+<li class="menu-sub-item-wp">
+<a class="menu-sub-item" href="/misc/nowshowstar?fr=daohang" target="_blank">
+֪��֮��</a>
+</li>
+<div class="menu-item-user-list">��������<div class="line-bar"></div></div>
+<li class="menu-sub-item-wp">
+<a class="menu-sub-item" href="/hangjia?fr=daohang" target="_blank">
+�����м�</a>
+</li>
+<li class="menu-sub-item-wp">
+<a class="menu-sub-item" href="/opendev?fr=daohang" target="_blank">
+����ƽ̨</a>
+</li>
+<li class="menu-sub-item-wp">
+<a class="menu-sub-item" href="/special/view/cooperation?fr=daohang" target="_blank">
+Ʒ�ƺ���</a>
+</li>
+<div class="menu-item-user-list">֪������<div class="line-bar"></div></div>
+<li class="menu-sub-item-wp">
+<a class="menu-sub-item" href="/shop?fr=daohang" target="_blank">
+�Ƹ��̳�</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="menu-item menu-item-expert">
+<a class="menu-title" href="javascript:;">
+��ɫ</a>
+<div class="menu-content">
+<ul class="menu-sub-list">
+<li class="menu-sub-item-wp">
+<a class="menu-sub-item menu-sub-item-expert" href="http://jingyan.baidu.com/" target="_blank">
+<span class="expert-icon expert-icon-jy"></span>
+<span>����</span>
+</a>
+</li>
+<li class="menu-sub-item-wp">
+<a class="menu-sub-item menu-sub-item-expert" href="https://p.baidu.com" target="_blank">
+<span class="expert-icon expert-icon-pi"></span>
+<span>�ٶ���</span>
+</a>
+</li>
+<li class="menu-sub-item-wp">
+<a class="menu-sub-item menu-sub-item-expert" href="" target="_blank">
+<span class="expert-icon expert-icon-baby"></span>
+<span>����֪��</span>
+</a>
+</li>
+<li class="menu-sub-item-wp">
+<a class="menu-sub-item menu-sub-item-expert" href="" target="_blank">
+<span class="expert-icon expert-icon-zuoye"></span>
+<span>��ҵ��</span>
+</a>
+</li>
+<li class="menu-sub-item-wp">
+<a class="menu-sub-item menu-sub-item-expert" href="http://ciyuanfan.baidu.com/?ref=pcsyts" target="_blank">
+<span class="expert-icon expert-icon-ciyuanfan"></span>
+<span>��Ԫ��</span>
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="menu-right-section">
+<ul class="menu-right-list">
+<li class="menu-right-list-item zhidao-app">
+<a href="/activity/simpleindexact?tplName=nareplace&type=pc" class="menu-right-list-link" target="_blank">
+<span class="item-icon">
+</span>
+<span class="item-name">
+�ֻ���</span>
+</a>
+<span class="right-list-item-devide">
+</span>
+</li>
+<li class="menu-right-list-item user-center">
+<a href="/ihome" class="menu-right-list-link" target="_blank">
+<span class="item-icon">
+</span>
+<span class="item-name">
+�ҵ�֪��</span>
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+        // ��������ʱ��
+        alog && alog('speed.set', 'c_menu', +new Date); alog.fire && alog.fire("mark");
+    </script>
+
+<div id="body" class="container">
+
+<div class="layout-wrap">
+<div id="top-nav-bar" class="top-nav-bar">
+<div class="container2">
+<a class="toplogo" href="http://zhidao.baidu.com" title="�ٶ�֪��"></a>
+<div class="topsearch">
+<form action="/search" name="search-nav-form" id="search-nav-form" method="get">
+<input class="hdi" id="nav-kw" maxlength="256" tabindex="1" size="46" name="word" value="" autocomplete="off" />
+<button alog-action="g-search-anwser" type="submit" id="search-btn-nav" hidefocus="true"  tabindex="2" class="i-search-link">������</button>
+</form>
+</div>
+</div>
+</div>
+<div style="display:none">
+<nav class="wgt-nav f-12" alog-group="qb-cate-nav">
+<a href="/">�ٶ�֪��</a>
+&gt;<a href="/browse/84">�������</a>
+&gt;<a href="/browse/973">ʱ������</a>
+</nav>
+</div>
+<section class="line qb-section">
+<article class="grid qb-content" id="qb-content">
+<div class="wgt-ask accuse-response line mod-shadow " id="wgt-ask">
+<h1 accuse="qTitle">
+<i class="iknow-qb_home_icons i-status-being grid mr-10"></i>
+<span class="ask-title ">�Ű�ѡ����һ�ι����쵼����˭��</span>
+</h1>
+<div class="line f-aid ask-info ff-arial" id="ask-info">
+<span class="grid-r ask-time">
+<ins class="share-area">
+</ins>
+</span>
+<span>����</span>
+<span id="v-times" class="f-pipe" style="display: none"></span>
+<ins class="accuse-area"></ins>
+</div>
+<div class="line">
+<span  class="mt-20 f-14 f-blue inline-block more-answers" alog-alias="qb-answer-bar" id="answer-bar">���и��õĴ�<i class="i-incline-down"></i></span></div>
+<div class="wgt-search-relate f-yahei f-pening" style="display:none;">
+<p class="title">��ѡ��1����������Ĺؼ��ʣ�����������ϡ�Ҳ��ֱ�ӵ㡰�������ϡ������������⡣</p>
+<ul class="line mt-5">
+<li class="word grid">�����쵼��</li>
+<li class="word grid">�Ű�</li>
+<li class="word grid word-search"><em class="iknow-qb_home_icons"></em>��������</li>
+</ul>
+</div>
+<div class="line " id="answer-editor" data-realName=""></div>
+<script type="text/html" id="replyer-addtags-tmpl">
+<div class="addtags-box">
+    <div class="addtags-mask"></div>
+    <div class="addtags-content">
+        <i class="iknow-qb_replyer_icons i-ask-close addtags-close"></i>
+        <div class="addtags-head"><div class="addtags-head-img"></div><span>�ش��ύ�ɹ���</span></div>
+        <div class="addtags-subhead">ѡ���ó�������������⣿</div>
+        <div class="tags-box">
+            {@each tagList as item}
+            <li class="{@if item.isQuesTag && item.isQuesTag == 1}selected{@/if}">${item.tagName}</li>
+            {@/each}
+        </div>
+        <div class="addtags-bottom">
+            <div class="addtags-sub">�����ش�</div><div class="addtags-notip ml-10">������ʾ</div>
+        </div>
+    </div>
+</div>
+</script>
+<script type="text/html" id="replyer-tags-tmpl">
+<div class="tags-box">
+    <div class="tags-mask"></div>
+    <div class="tags-content">
+        <i class="iknow-qb_replyer_icons i-ask-close tags-close"></i>
+        <div class="tags-head">�ش��ύ�ɹ���</div>
+        <div class="tags-subhead">�Ƿ�����ش����⣿</div>
+        <div class="tags-bottom">
+            <div class="tags-sub">�����ش�</div><div class="tags-notip ml-10">������ʾ</div>
+        </div>
+    </div>
+</div>
+</script>
+<script type="text/html" id="government-affairs-template">
+<div class="affairs-box">
+    <div class="affairs-mask"></div>
+    <div class="affairs-content">
+        <i class="iknow-qb_replyer_icons i-ask-close affairs-close"></i>
+        <a log="pos:government-affairs-act,action:click" href="http://zhidao.baidu.com/kit/topic?name=zhidaoyibanshi" class="affairs-img">
+            <img src="https://gss0.bdstatic.com/7051cy89RcgCncy6lo7D0j9wexYrbOWh7c50/zhengwu%2F650X305.png">
+        </a>
+    </div>
+</div>
+</script>
+<script type="text/html" id="visit-join-model-template">
+    <p class="visit-join-model-title">�����Ŷӣ���һȺ־ͬ����֮�����ʶ��һ�����������</p>
+    <div class="visit-join-model-content" id="visit-join-model-content">
+        <div class="carousel-misc"><a href="javascript:void(0);" data-action="left" class="visit-join-control visit-join-control-left visit-join-control-left-disable"></a><a href="javascript:void(0);" data-action="right" class="visit-join-control visit-join-control-right"></a></div>
+    </div>
+    <div class="visit-join-model-warn" id="visit-join-warn">����ѡ��һ��Ҫ������Ŷ�</div>
+</script>
+</div>
+<script>
+    // �����������ʱ��
+    alog && alog('speed.set', 'c_ask', +new Date); alog.fire && alog.fire("mark");
+</script>
+<script type="text/template" id="recommond-pic-tpl">
+    {@each picture as item, index}
+    {@if index < 7}
+    <div class="picture" style="background:url(${__2ssl__(item.url)}) center no-repeat;background-size: auto 100%;" data-src="${__2ssl__(item.url)}">
+        <div class="select-btn iknow-icons iconfont-circle-select" data-pid="${item.pid}">
+            <input type="radio" name="localPicture" data-type="0" class="local-picture" />
+        </div>
+    </div>
+    {@/if}
+    {@/each}
+</script>
+<script type="text/template" id="add-pic-confirm-tpl">
+    <div class="dialog-tip">ѡ���Ƽ�ͼƬ���Լ��ϴ�ͼƬ</div>
+    <div class="preview-bg"></div>
+    <div class="preview-container">
+        <img src="" class="preview" />
+    </div>
+    <div id="dialog-picture-album">
+        <div class="add-pic-button">
+            <div class="add-pic-bg"></div>
+            <div class="is-loading" style="display:none">�ϴ���</div>
+            <div class="text-container">
+                <div class="add-pic-upload" id="add-img-btn">
+                    <i class="iknow-icons iconfont-change"></i>
+                    <span>�����ϴ�</span>
+                </div>
+                <div class="add-pic-url">
+                    <i class="iknow-icons iconfont-link"></i>
+                    <span>��������</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+<script type="text/template" id="local-upload-tpl">
+    <div class="select-btn local-upload iknow-icons iconfont-circle-select" data-pid="${pid}">
+        <input type="radio" name="localPicture" data-type="${type}" class="local-picture"/>
+    </div>
+</script>
+<script type="text/javascript">
+        F.context('answers')['2900928668'] = {uid:"656986426",imId:"3ad1b1f9d3eac3ced3c6d3c62827",id:"2900928668",userName:"����������",userNameEnc:"%B1%F9%D3%EA%C3%CE%D3%C6%D3%C6",user:{sex:"1",iconType:"7",gradeIndex:"20",grAnswerNum:"59528",carefield: [{cid:"1095",cname:"�������"}],isAuth:"0",authTitle:"",isUserAdmin:"1",userAdminLevel:"15",userAdminTitle:"�߼�֥�齫",userAdminType:"3",isFamous:"0",isMaster:"0",goodRate:"95",mavinUtype:"0",mavinIsNew:"1",mavinName:"����������",mavinTitle:"����������",mavinAnswerNum:"7.7��",mavinAdoptNum:"6��",mavinLevel:"3",mavinLevelTitle:"֪�������м�",mavinMajor:"1",mavinHelpNum:"1676��",mavinPraise:"13��",mavinLevelDesc:"������ҵ�����м�",mavinFields: ["����"],mavinAvatar:"http://g.hiphotos.baidu.com/zhidao/wh%3D450%2C600/sign=7577ad58f403918fd78435ce640d0aa1/9f510fb30f2442a7cf63071dd243ad4bd113021c.jpg",mavinDesc:"ϲ���ش��������⣬Ը���������̽�����⣬�����Ѷ��꣬����ż���֪����ϣ��������֪�������ʴ�"},isAnonymous:"0",isCurrentUser:"0",mapUrl:"",refer:"",replyAskNum:"",threadId:"11603714673",hasComment:"0",qid:"1500394157498848939",raid:"",recommendCanceled:"0"};
+        F.context('answers')['2900928668'].encodeUid = '3ad14069236f25705e792827';
+            </script>
+<div class="wgt-best mod-shadow
+                reply-user-ismavin
+    " id="best-answer-2900928668">
+<div class="hd line ">
+<span class="grid-r f-aid pos-time answer-time f-pening">
+���� 07:18
+</span>
+<div id="act-link-banner-wp" class="grid-r"></div>
+<span class="iknow-qb_home_icons answer-type answer-best grid"></span>
+<span class="answer-title h2 grid">
+��Ѵ�</span>
+</div>
+<div class="bd answer" id="answer-2900928668">
+<div class="line info f-aid">
+</div>
+<div class="line content">
+<div id="best-content-2900928668" accuse="aContent" class="best-text mb-10" style="min-height: 55px;">
+<p><strong>�Ű�ѡ����һ�ι����쵼���ǵ���˹�����ڶ���</strong></p><p><a href="https://gss0.baidu.com/-4o3dSag_xI4khGko9WTAnF6hhy/zhidao/pic/item/3b87e950352ac65cb4f8e323f7f2b21192138ae5.jpg" target="_blank" title="����鿴��ͼ" class="ikqb_img_alink"><img class="ikqb_img" src="https://gss0.baidu.com/-4o3dSag_xI4khGko9WTAnF6hhy/zhidao/wh%3D600%2C800/sign=29717b7345540923aa3c6b78a268fd31/3b87e950352ac65cb4f8e323f7f2b21192138ae5.jpg" esrc="https://gss0.baidu.com/-4o3dSag_xI4khGko9WTAnF6hhy/zhidao/wh%3D450%2C600/sign=f28e2238dd09b3deebeaec6cf98f40b7/3b87e950352ac65cb4f8e323f7f2b21192138ae5.jpg" /></a></p><p>����ͼ������˹�����ڶ�</p><p>4��19����Ϣ�� ����ʱ��4��18�գ��Ű���һ��ȫ���� ���� Ȩ��������ʽ��ɣ�<strong>57��ĵ���˹�����ڶ���ѡΪ����ίԱ���� ϯ����Ϊ��һ�ιŰ͹���Ԫ�׼���������</strong>������ζ�ŹŰ͸������˽���ʮ��ġ���˹�����ֵ�ʱ������<br /></p><p>57��ĵ���˹�����ڶ���ǰ���ι� �� ί Ա ��� һ���� ϯ�沿������� һ ���� ϯ������Ϊ�� һλ��1959��Ű͸� ��������ĹŰ�Ԫ�ס�2003�꣬���ڶ���Ϊ�Ź���ʷ����������� ����&nbsp; �� �� ί Ա��2013�꣬����ѡΪ�Ű͹� �� ί Ա��� һ �� �� ϯ�������Ժ���һֱ���Ͷ�����˹���޵ĵ������֡����뿨�ڶ����¹��Ĺ� �� �� Ա�ƣ����ڶ����¡���Ч�ʡ�ִ����ǿ���ܹ�����������ڡ���</p><p><a href="https://gss0.baidu.com/9vo3dSag_xI4khGko9WTAnF6hhy/zhidao/pic/item/0b46f21fbe096b637f67da0000338744ebf8ac60.jpg" target="_blank" title="����鿴��ͼ" class="ikqb_img_alink"><img class="ikqb_img" src="https://gss0.baidu.com/9vo3dSag_xI4khGko9WTAnF6hhy/zhidao/wh%3D600%2C800/sign=1213fea2d962853592b5da27a0df5afe/0b46f21fbe096b637f67da0000338744ebf8ac60.jpg" esrc="https://gss0.baidu.com/9vo3dSag_xI4khGko9WTAnF6hhy/zhidao/wh%3D450%2C600/sign=6e52218f7ac6a7efb973a022c8ca8367/0b46f21fbe096b637f67da0000338744ebf8ac60.jpg" /></a></p><p>2013�꣬�Ͷ�����˹���������ιŰ͹��� ί Ա���� ϯ�󣬳������ϵ�������������2018��ڶ����ڽ��������ݡ�����־���ģʽ���µ�ͬʱ��Ҫʼ�ռ�ֹ�����������������Ͷ�����һ���쵼�˻����ġ��� �κ��ߡ����˴�Ȩ������֮���Ͷ�����˹���޽��������ι� ���� һ ���ֱ��2021�ꡣ�Ű�����½����У���������Ϊ�������ܱ�֤�������ѡ���ģ��쵼�ˣ���˭�����ܰ��պ÷��򡱡�</p><p><a href="https://gss0.baidu.com/-fo3dSag_xI4khGko9WTAnF6hhy/zhidao/pic/item/0df3d7ca7bcb0a46741c0f696763f6246b60afa0.jpg" target="_blank" title="����鿴��ͼ" class="ikqb_img_alink"><img class="ikqb_img" src="https://gss0.baidu.com/-fo3dSag_xI4khGko9WTAnF6hhy/zhidao/wh%3D600%2C800/sign=b0d29e4eb5389b5038aae854b505c9e5/0df3d7ca7bcb0a46741c0f696763f6246b60afa0.jpg" esrc="https://gss0.baidu.com/-fo3dSag_xI4khGko9WTAnF6hhy/zhidao/wh%3D450%2C600/sign=53613455e9dde711e7874bf292dfe22d/0df3d7ca7bcb0a46741c0f696763f6246b60afa0.jpg" /></a></p><p></p><p>����ͼ���Ͷ�����˹����</p><p>��ǰ���Ű��⽻����ʾ����һ���� ϯ������ӵ�п�˹��������գ��������ɽ��ǡ�����֮�ӡ������Űͷ���δ�����г��ĸ��ܷ��������Ǽ�����������ս����������ƣ����ڶ��������Ͷ�����˹���޽��������еľ��ø��»������ٽ��������ر��ǻ���Ű�����ҵ��С��ҵ������������ɶȡ�</p><p>������ʾ���Ű�ÿ5�����һ�δ�ѡ������3��11�չŰ;��д�ѡ�ڶ��׶�ѡ�٣�ѡ����605��������4��18�������һ��ȫ���� ���� Ȩ�����ᣬ��ѡ�ٲ����Ű͹��� ίԱ ��31λ�³�Ա��ίԱ���� ϯ��<br /></p><p>������Դ��������</p>
+</div>
+<div class="quality-content-view-more mb-15">
+</div><div class="newbest-content-meta line mt-15 ff-arial">
+<div class="grid-r f-aid ">
+<ins class="accuse-area" alog-alias="qb-accuse-link-best" data-rid="2900928668"></ins>
+<span class="answer-error f-black cursor" data-rid="2900928668"><i class="iknow-icons iconfont-answer-error mr-5"></i>�𰸾���</span>
+<span class="f-pipe">|</span>
+<span alog-action="qb-comment-btnbestbox" class="comment f-black cursor" id="comment-2900928668"><i class="iknow-qb_home_icons i-icon-comment mr-5"></i>����</span>
+<div class="qb-zan-eva">
+<span 
+		alog-action="qb-zan-btnbestbox" 
+		class="iknow-qb_home_icons evaluate evaluate-32
+						" 
+		id="evaluate-2900928668" 
+		data-evaluate="6" 
+		>
+</span>
+<span 
+		alog-action="qb-evaluate-outer" 
+		class="iknow-qb_home_icons evaluate evaluate-bad evaluate-32 
+						" 
+		id="evaluate-bad-2900928668" 
+		data-evaluate="0" 
+		>
+</span>
+</div>
+</div>
+</div>
+<div id="js-correct-answer-editor" class="correct-answer-editor"></div>
+</div>
+</div>
+<div class="line wgt-replyer-best wgt-replyer-special-bg " >
+<div class="replyer-best-box">
+<div class="grid mr-15">
+<p class="avatar-70 avatar-static">
+<a alog-action="qb-username" log="pms:newqb,pos:bestreplyer" class="avatar-mavin-a" rel="nofollow" href="/hangjia/profile/%B1%F9%D3%EA%C3%CE%D3%C6%D3%C6?ie=gbk" target="_blank" data-img="https://gss0.baidu.com/-fo3dSag_xI4khGko9WTAnF6hhy/zhidao/wh%3D450%2C600/sign=7577ad58f403918fd78435ce640d0aa1/9f510fb30f2442a7cf63071dd243ad4bd113021c.jpg">
+</a>
+</p>
+</div>
+<div class="grid f-aid ff-arial">
+<p class="mb-5">
+<a alog-action="qb-username" log="pms:newqb,pos:bestreplyer" class="mavin-name f-14 mr-10" rel="nofollow" href="/hangjia/profile/%B1%F9%D3%EA%C3%CE%D3%C6%D3%C6?ie=gbk" target="_blank">����������</a>
+<span class="f-orange">
+<i data-title="������ҵ�����м�" data-major="1" class="mavin-reply-icon i-mavin-trade i-mavin-prof"></i>
+</span>
+<span class="f-pipe">|</span>
+<span>����������</span>
+</p>
+<p>
+��棺<a log="pms:newqb,page:question,pos:qili_best,qili_rid:2900928668,action:click,type:2014,uname:����������,mark:656986426,cid:114" href="https://vivaldi.club/" class="newbest-mavin-prolink" target="_blank" data-cid="114101" data-uid="656986426">����</a>
+<span class="f-pipe">|</span>
+�ó���<span>
+����
+</span>
+</p>
+</div>
+</div>
+</div>
+</div>
+<script>
+                    // ����or����or����or�Ƽ��𰸴��ʱ��
+                    alog && alog('speed.set', 'c_best', +new Date); alog.fire && alog.fire("mark");
+                </script>
+<script>
+                    // ����ʱ����
+                    void function(e,t){for(var n=t.getElementsByTagName("img"),a=+new Date,i=[],o=function(){this.removeEventListener&&this.removeEventListener("load",o,!1),i.push({img:this,time:+new Date})},s=0;s< n.length;s++)!function(){var e=n[s];e.addEventListener?!e.complete&&e.addEventListener("load",o,!1):e.attachEvent&&e.attachEvent("onreadystatechange",function(){"complete"==e.readyState&&o.call(e,o)})}();alog("speed.set",{fsItems:i,fs:a})}(window,document);
+                </script>
+<div class="wgt-answers has-other  " id="wgt-answers">
+<div class="hd line other-hd  hide">
+<h2>�����ش�</h2>
+</div>
+<div class="bd-wrap">
+<script type="text/javascript">
+                    F.context('answers')['2901083855'] = {uid:"1564808658",imId:"d2153731f7c8c1a6c5aec8cbcdf8455d",isAnonymous:"1",isCurrentUser:"0",mapUrl:"",refer:"",replyAskNum:"",threadId:"11604335421",hasComment:"0",qid:"1500394157498848939",raid:"",recommendCanceled:"0"};
+                    F.context('answers')['2901083855']['c_timestamp'] = '1524121696';
+                    F.context('answers')['2901083855'].encodeUid = 'd2154069236f25705e79455d';
+                                                        </script>
+<div class="bd answer
+                                answer-first                 
+                answer-last 
+                 
+                answer-dispute answer-dispute-hide 
+                answer-fold 
+                " id="answer-2901083855">
+<div class="line">
+<a id="here" name="here"></a><div class="line content" data-valuerrank="-1">
+<div id="answer-content-2901083855" accuse="aContent" class="answer-text line">
+<span class="con">
+����˹�����ڶ�
+</span>
+</div>
+<div class="line info f-light-gray mt-10 mb-5 f-12">
+<div class="grid pt-5">
+��������<span class="f-pipe">|</span>
+<span class="pos-time">
+�����ڽ��� 15:08
+</span>
+</div>
+<div class="grid-r f-aid pos-relative">
+<ins class="accuse-area" alog-action="qb-accuse-link" data-rid="2901083855"></ins>
+<span alog-action="qb-comment-btn" class="comment f-black cursor" id="comment-2901083855"><i class="iknow-qb_home_icons i-icon-comment mr-5"></i>����</span>
+<div class="qb-zan-eva">
+<span 
+		alog-action="qb-zan-btn" 
+		class="iknow-qb_home_icons evaluate evaluate-32
+						" 
+		id="evaluate-2901083855" 
+		data-evaluate="0" 
+		>
+</span>
+<span 
+		alog-action="qb-evaluate-outer" 
+		class="iknow-qb_home_icons evaluate evaluate-bad evaluate-32 
+						" 
+		id="evaluate-bad-2901083855" 
+		data-evaluate="0" 
+		>
+</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="show-answer-dispute" style="display: block;">
+<div class="show-hide-dispute">
+<span style="display: none">����</span>
+1���۵��ش�<i class="i-incline-down ml-5"></i>
+</div>
+</div>
+</div>
+</div>
+<div class="wgt-bottom-union mod-shadow line">
+<h2><i class="iknow-qb_home_icons"></i>Ϊ���Ƽ���</h2>
+<div class="hao-lu-list" id="hao-lu-list">
+</div>
+<script id="t:hao-lu-list" type="text/html">
+    <#for ( var i = 0; i < data.length; i++ ) {#>
+        <div class="item">
+            <a class="hao-link" href="https://www.baidu.com/s?word=<#:=encodeURIComponent(data[i])#>&tn=50000075_hao_pg&ie=utf-8&rsv_dl=0_cont_hao123_top" target="_blank"><#:=data[i]#></a>
+            </div>
+    <#}#>
+</script>
+</div>
+<div class="wgt-related mt-5 mod-shadow" id="wgt-related">
+<h2><i class="iknow-qb_home_icons"></i>������������</h2>
+<div class="related-list line">
+<ul class="list-34 related-ul" alog-group="qb-relative-que">
+<li >
+<span class="grid-r f-aid ff-arial">2018-04-18</span>
+<a href="/question/1888494825802109028.html?qbl=relate_question_0" target="_blank"
+                    log="fr:qrl,pms:newqb,page:qb-new,pos:relative_title,qtype:zd,index:1,cid:973" class="related-link related-link-zd" data-qid="1888494825802109028">
+<span class="related-restrict-title grid">�Űͽ�ѡ����һ�ι����쵼����ʲô���壿</span>
+</a>
+</li>
+<li >
+<span class="grid-r f-aid ff-arial">2015-11-11</span>
+<a href="/question/1733731874462691307.html?qbl=relate_question_1" target="_blank"
+                    log="fr:qrl,pms:newqb,page:qb-new,pos:relative_title,qtype:zd,index:2,cid:973" class="related-link related-link-zd" data-qid="1733731874462691307">
+<span class="related-restrict-title grid">�Ű�����쵼����˭</span>
+<i class="iknow-qb_home_icons i-has-img" title="���������ͼƬ"></i>
+<em class="praise-num ml-5" title="���лش���19����ͬ">
+<i class="iknow-qb_home_icons i-evaluate"></i><span class="ml-5 ff-arial">19</span>
+</em>
+</a>
+</li>
+<li >
+<span class="grid-r f-aid ff-arial">2015-11-06</span>
+<a href="/question/540792865.html?qbl=relate_question_2" target="_blank"
+                    log="fr:qrl,pms:newqb,page:qb-new,pos:relative_title,qtype:zd,index:3,cid:973" class="related-link related-link-zd" data-qid="540792865">
+<span class="related-restrict-title grid">�Űͺ�ɫ�����쵼����˭��</span>
+<em class="praise-num ml-5" title="���лش���7����ͬ">
+<i class="iknow-qb_home_icons i-evaluate"></i><span class="ml-5 ff-arial">7</span>
+</em>
+</a>
+</li>
+<li >
+<span class="grid-r f-aid ff-arial">2016-05-20</span>
+<a href="/question/241794030905247844.html?qbl=relate_question_3" target="_blank"
+                    log="fr:qrl,pms:newqb,page:qb-new,pos:relative_title,qtype:zd,index:4,cid:973" class="related-link related-link-zd" data-qid="241794030905247844">
+<span class="related-restrict-title grid">�Ű�������ҵ��쵼��ΪʲôҪ��һ������ͳ�����ڿ�Ҫ���˾�Ȼ��...</span>
+<em class="praise-num ml-5" title="���лش���65����ͬ">
+<i class="iknow-qb_home_icons i-evaluate"></i><span class="ml-5 ff-arial">65</span>
+</em>
+</a>
+</li>
+<li >
+<span class="grid-r f-aid ff-arial">2017-09-06</span>
+<a href="/question/365872000062390972.html?qbl=relate_question_4" target="_blank"
+                    log="fr:qrl,pms:newqb,page:qb-new,pos:relative_title,qtype:zd,index:5,cid:973" class="related-link related-link-zd" data-qid="365872000062390972">
+<span class="related-restrict-title grid">�Ű�Ϊʲô��ʼ5�������ι����ڣ�</span>
+<i class="iknow-qb_home_icons i-has-img" title="���������ͼƬ"></i>
+<em class="praise-num ml-5" title="���лش���3����ͬ">
+<i class="iknow-qb_home_icons i-evaluate"></i><span class="ml-5 ff-arial">3</span>
+</em>
+</a>
+</li>
+<li >
+<span class="grid-r f-aid ff-arial">2015-07-22</span>
+<a href="/question/535220394.html?qbl=relate_question_5" target="_blank"
+                    log="fr:qrl,pms:newqb,page:qb-new,pos:relative_title,qtype:zd,index:6,cid:973" class="related-link related-link-zd" data-qid="535220394">
+<span class="related-restrict-title grid">�Ű������ĸ�����</span>
+<em class="praise-num ml-5" title="���лش���65����ͬ">
+<i class="iknow-qb_home_icons i-evaluate"></i><span class="ml-5 ff-arial">65</span>
+</em>
+</a>
+</li>
+<li >
+<span class="grid-r f-aid ff-arial">2017-12-22</span>
+<a href="/question/1180683342812969739.html?qbl=relate_question_6" target="_blank"
+                    log="fr:qrl,pms:newqb,page:qb-new,pos:relative_title,qtype:zd,index:7,cid:973" class="related-link related-link-zd" data-qid="1180683342812969739">
+<span class="related-restrict-title grid">�Ű��쵼���Ͷ�����˹���޽�ж��˭����Σ�</span>
+<i class="iknow-qb_home_icons i-has-img" title="���������ͼƬ"></i>
+</a>
+</li>
+<li >
+<span class="grid-r f-aid ff-arial">2013-04-12</span>
+<a href="/question/537099603.html?qbl=relate_question_7" target="_blank"
+                    log="fr:qrl,pms:newqb,page:qb-new,pos:relative_title,qtype:zd,index:8,cid:973" class="related-link related-link-zd" data-qid="537099603">
+<span class="related-restrict-title grid">�Ű�������ͳ��˭</span>
+<em class="praise-num ml-5" title="���лش���11����ͬ">
+<i class="iknow-qb_home_icons i-evaluate"></i><span class="ml-5 ff-arial">11</span>
+</em>
+</a>
+</li>
+</ul>
+</div>
+<div class="related-more clearfix">
+<a log="fr:qrl,pms:newqb,pos:relative_more" alog-action="qb-relative-more" target="_blank" rel="nofollow" href="/search?word=�Ű�ѡ����һ�ι����쵼����˭��&ie=gbk&fr=qrl&cid=973&qbl=relate_question_more" class="line f-14 mt-5">
+������������<span class="ff-arial">&nbsp;&gt;</span>
+</a>
+</div>
+</div>
+<div class="wgt-push mod-shadow last hidden">
+<div class="wgt-push-title">
+<h2 class="hd line"><i class="iknow-qb_home_icons"></i>��������</h2>
+<div class="wgt-push-change smooth">
+<i class="iknow-icons">&#xe675;</i><span>��һ��</span>
+</div>
+<div class="wgt-push-intro smooth"><span>�ش����⣬Ӯ�������</span><i class="iknow-icons">&#xe6b9;</i></div>
+</div>
+<ul class="push-ul">
+</ul>
+<div class="ft line more-push clearfix">
+<a class="grid" log="action:click,area:wgt-push-more,module:question,page:question" href="/list" target="_blank">����ȴ���������<span class="ff-arial">&nbsp;&gt;</span></a>
+</div>
+</div>
+</article>
+<aside class="grid-r qb-side" id="qb-side">
+<div></div>
+<div class="wgt-user mavin mod-shadow" id="wgt-user">
+<p class="f-yahei mavin-title">
+�ٶ�֪��<span class="f-green">��������м�</span>Ϊ������</p>
+<div class="qbside-top-line"></div>
+<div class="mavin-list line" id="mavin-list"></div>
+</div>
+<div class="qbside-top-line"></div>
+<div id="union-asplu" class="union-asplu line mod-noshadow wgt-ads"></div>
+<div style="display:none">
+1
+2
+</div>
+<div style="padding: 20px 9px 20px 10px;widget:250px;height:250px;">
+<script src="//dup.baidustatic.com/js/ds.js"></script>
+<script>
+    (function() {
+        var s = "_" + Math.random().toString(36).slice(2);
+        document.write('<div id="' + s + '"></div>');
+        (window.slotbydup=window.slotbydup || []).push({
+            id: '2598853',
+            container: s,
+            size: '250,250',
+            display: 'inlay-fix'
+        });
+    })();
+</script>
+</div>
+<div class="cms-slide cms-slide-lazy mod-noshadow">
+<script type="text/javascript">
+		F.context('cmsRight', [
+															
+							{
+					'url':'http://zhidao.baidu.com/kit/topic?name=GreenTaxes',
+					'src':'https://gss0.bdstatic.com/7051cy89QMgCncy6lo7D0j9wexYrbOWh7c50/shangcheng%2FGreenTaxes270*170.png?t=1523157245'
+				}							]);
+	</script>
+<div class="cms-scroll" id="cms-scroll">
+<div class="cms-mask" id="cms-mask"></div>
+</div>
+<p class="mt-15" id="cms-company">
+<a rel="nofollow" href="http://zhidao.baidu.com/activity/commact?name=datikuanghuan" target="_blank" data-img="https://gss0.bdstatic.com/7051cy89QMgCncy6lo7D0j9wexYrbOWh7c50/team-iknow/tuanjie270x120.png?t=1523157245">
+</a>
+</p>
+<p class="mt-15" id="cms-company">
+<a rel="nofollow" href="http://zhidao.baidu.com/baobao" target="_blank" data-img="https://gss0.bdstatic.com/70cFsjip0QIZ8tyhnq/img/iknow/pgc/270x116.jpg?t=1523157245">
+</a>
+</p>
+</div>
+<div class="cms-slide mod-noshadow knowledge">
+<div class="cms-inner">
+<p class="cms-link-title">����֪ʶ��֪��</p>
+<ul class="pb-5 mt-5" id="cms-link">
+<li><a alog-action="qb-inner-link" href="http://zhidao.baidu.com/kit/topic?name=chunjiexilie1" target="_blank" log="page:question,area:knowledge,index:0">���ս���˰�İ�����֪����</a></li>
+<li><a alog-action="qb-inner-link" href="http://test.baidu.com/qss/2669/392687.html##survey-navigation" target="_blank" log="page:question,area:knowledge,index:1">�ٶ�֪����ѡ��˹���ļ����</a></li>
+<li><a alog-action="qb-inner-link" href="http://zhidao.baidu.com/activity/commact?name=datikuanghuan" target="_blank" log="page:question,area:knowledge,index:2">���Ž�һ�¡�2018������ſ��</a></li>
+</ul>
+</div>
+</div>
+</aside>
+</section>
+<div style="margin: 30px 0;width: 960px;height:90px;">
+<script>
+    (function() {
+        var s = "_" + Math.random().toString(36).slice(2);
+        document.write('<div id="' + s + '"></div>');
+        (window.slotbydup=window.slotbydup || []).push({
+            id: '2598845',
+            container: s,
+            size: '960,90',
+            display: 'inlay-fix'
+        });
+    })();
+</script>
+</div>
+</div>
+</div>
+<div class="wgt-mask" id="js-mask" style="display: none;"></div>
+<div class="wgt-accusation" id="js-accuse">
+<div class="close-btn" id="js-accuse-closebtn">��</div>
+<ul class="accusation-tip">
+<li class="accusation-tip-item">���ˡ���ҵ��<a href="javascript:void(0)" class="tort-entry">��ȨͶ��</a></li>
+<li class="accusation-tip-item">Υ���к���Ϣ,�����·�ѡ����ύ</li>
+</ul>
+<p class="title-item">���</p>
+<div class="types">
+<ul class="types-wrap clearfix">
+<li class="type-item js-accuse-type-item" id="js-accuse-first-reason" data-reason="1" data-question="��������" data-answer="�𰸴���"></li>
+<li class="type-item js-accuse-type-item" data-reason="2">�������</li>
+<li class="type-item js-accuse-type-item" data-reason="3">���ʹ�ˮ</li>
+<li class="type-item js-accuse-type-item" data-reason="4">ɫ�顢����</li>
+<li class="type-item js-accuse-type-item" data-reason="5">�������</li>
+</ul>
+</div>
+<p class="desc">���ǻ�ͨ����Ϣ������ȷ�ʽ���콫�ٱ����֪ͨ����</p>
+<p class="title-item">˵��</p>
+<div class="text-container">
+<textarea class="accusation-content" id="js-accuse-content" placeholder="��ϸ��˵�������������Ǹ����������ķ�����"></textarea>
+<p class="words"><span class="words-current" id="js-accuse-words-current">0</span>/200</p>
+</div>
+<div class="accusation-btn-group">
+<p class="errmsg" id="js-errmsg"></p>
+<div class="accusation-btn accusation-btn-submit disabled" id="js-accuse-btn-submit">�ύ</div>
+<div class="accusation-btn accusation-btn-cancel" id="js-accuse-btn-cancel">ȡ��</div>
+</div>
+</div>
+
+
+<div class="wgt-footer-new">
+<div class="footer-wp">
+<ul class="footer-list clearfix">
+<li class="footer-list-item footer-list-guide">
+<div class="footer-title"><span class="icon-guide"></span>���ְ���</div>
+<ul class="footer-link clearfix">
+<li><a href="http://help.baidu.com/question?prod_en=zhidao&class=320&id=1525" target="_blank">��δ���</a></li>
+<li><a href="http://help.baidu.com/question?prod_id=9&class=320&id=1526" target="_blank">��ȡ����</a></li>
+<li><a href="http://help.baidu.com/question?prod_id=9&class=337&id=1513" target="_blank">ʹ�òƸ�ֵ</a></li>
+</ul>
+</li>
+<li class="footer-list-item footer-list-intro">
+<div class="footer-title"><span class="icon-intro"></span>�淨����</div>
+<ul class="footer-link clearfix">
+<li><a href="/shop" target="_blank">֪���̳�</a></li>
+<li><a href="http://zhidao.baidu.com/pcs/zhimatuan/index.html" target="_blank">֪���Ŷ�</a></li>
+<li><a href="/hangjia" target="_blank">�м���֤</a></li>
+<li><a href="http://zhidao.baidu.com/s/hi-quality/index.html" target="_blank">�������ʴ�</a></li>
+</ul>
+</li>
+<li class="footer-list-item footer-list-sug">
+<div class="user-tip" id="js-footer-user-tip" style="display: none;">
+<p class="title">�����ʺ�״̬����</p>
+<p class="desc">��л�������ǵ�֧��</p>
+</div>
+<div class="footer-title"><span class="icon-sug"></span>Ͷ�߽���</div>
+<ul class="footer-link clearfix">
+<li><a href="javascript:;" log="module:common,action:click,area:footer_feedback" target="_blank" id="footer-feedback">�������</a></li>
+<li><a href="/misc/appeal" log="module:common,action:click,area:footer_appeal" target="_blank" id="js-footer-appeal">�˺�����</a></li>
+<li><a href="http://ikefu.baidu.com/web/zhishisousuo#" log="module:common,action:click,area:footer_consult" target="_blank">������ѯ</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="footer-new">
+<p class="jt1128">
+��ICP֤030173��-1&nbsp;&nbsp;&nbsp;�����ġ�2013��0934-983��&nbsp;&nbsp;&nbsp;&nbsp;        &copy;2018Baidu&nbsp;&nbsp;<a rel="nofollow" href="http://www.baidu.com/duty/" target="_blank">ʹ�ðٶ�ǰ�ض�</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a rel="nofollow" href="http://help.baidu.com/question?prod_id=9&class=325&id=2760" target="_blank">֪��Э��</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a rel="nofollow" href="/special/view/cooperation" target="_blank">�ٶ�֪��Ʒ�ƺ���</a>
+</p>
+</div>
+</div>
+
+
+<div id="anttongji"></div>
+
+
+
+
+
+<script>
+    void function(a,b,c,d,e,f){function g(b){a.attachEvent?a.attachEvent("onload",b,!1):a.addEventListener&&a.addEventListener("load",b)}function h(a,c,d){d=d||15;var e=new Date;e.setTime((new Date).getTime()+1e3*d),b.cookie=a+"="+escape(c)+";path=/;expires="+e.toGMTString()}function i(a){var c=b.cookie.match(new RegExp("(^| )"+a+"=([^;]*)(;|$)"));return null!=c?unescape(c[2]):null}function j(){var a=i("PMS_JT");if(a){h("PMS_JT","",-1);try{a=a.match(/{["']s["']:(\d+),["']r["']:["']([\s\S]+)["']}/),a=a&&a[1]&&a[2]?{s:parseInt(a[1]),r:a[2]}:{}}catch(c){a={}}a.r&&b.referrer.replace(/#.*/,"")!=a.r||alog("speed.set","wt",a.s)}}if(a.alogObjectConfig){var k=a.alogObjectConfig.sample,l=a.alogObjectConfig.rand;d="https:"===a.location.protocol?"https://fex.bdstatic.com"+d:"http://fex.bdstatic.com"+d,k&&l&&l>k||(g(function(){alog("speed.set","lt",+new Date),e=b.createElement(c),e.async=!0,e.src=d+"?v="+~(new Date/864e5)+~(new Date/864e5),f=b.getElementsByTagName(c)[0],f.parentNode.insertBefore(e,f)}),j())}}(window,document,"script","/hunter/alog/dp.min.js");
+    </script>
+
+<script>
+				var _hmt = _hmt || [];
+				(function() {
+					var hm = document.createElement("script");
+					hm.src = "https://hm.baidu.com/hm.js?6859ce5aaf00fb00387e6434e4fcc925";
+					var s = document.getElementsByTagName("script")[0];
+					s.parentNode.insertBefore(hm, s);
+				})();
+			</script>
+
+</body><script type="text/javascript" src="https://iknowpc.bdimg.com/static/common/lib/mod.75d1f98.js"></script><script type="text/javascript">(window.__IKNOW_GLOBAL__ || window).require.resourceMap({"res":{"common:widget\/lib\/jquery\/jquery.origin.js":{"pkg":"common:p3"},"common:widget\/js\/util\/https\/https.js":{"pkg":"common:p6"},"common:widget\/bottom-ask\/bottom-ask.js":{"pkg":"common:p0","deps":["common:widget\/js\/util\/tangram\/tangram.js","common:widget\/js\/util\/event\/event.js","common:widget\/js\/util\/log\/log.js"]},"common:widget\/css\/fonts\/iconfont.min.js":{"pkg":"common:p0"},"common:widget\/footer-new\/footer-new.js":{"pkg":"common:p0","deps":["common:widget\/lib\/jquery\/jquery.js","common:widget\/js\/util\/event\/event.js"]},"common:widget\/footer\/footer.js":{"pkg":"common:p0"},"common:widget\/header-metis\/header.js":{"pkg":"common:p0","deps":["common:widget\/lib\/jquery\/jquery.js"]},"common:widget\/menu\/menu.js":{"pkg":"common:p0","deps":["common:widget\/js\/util\/tangram\/tangram.js","common:widget\/js\/util\/log\/log.js"]},"common:widget\/search-box-new\/search-box-new.js":{"pkg":"common:p0","deps":["common:widget\/js\/util\/tangram\/tangram.js","common:widget\/js\/ui\/suggestion-new\/suggestion-new.js","common:widget\/js\/util\/event\/event.js","common:widget\/js\/util\/form\/form.js","common:widget\/js\/util\/log\/log.js","common:widget\/js\/ui\/dialog\/dialog.js","common:widget\/lib\/jquery.placeholder\/jquery.placeholder.js"]},"common:widget\/userbar-renew\/userbar-renew.js":{"pkg":"common:p0","deps":["common:widget\/js\/util\/tangram\/tangram.js","common:widget\/js\/util\/event\/event.js","common:widget\/js\/logic\/login\/login.js","common:widget\/js\/util\/log\/log.js","common:widget\/js\/util\/store\/store.js"]},"question:widget\/top-nav-bar\/top-nav-bar.js":{"url":"https:\/\/iknowpc.bdimg.com\/static\/question\/widget\/top-nav-bar\/top-nav-bar.addb9dd.js","deps":["common:widget\/js\/util\/tangram\/tangram.js","common:widget\/js\/ui\/suggestion\/suggestion.js","common:widget\/js\/util\/event\/event.js","common:widget\/js\/util\/form\/form.js","common:widget\/js\/util\/log\/log.js","common:widget\/js\/ui\/dialog\/dialog.js","common:widget\/lib\/jquery.placeholder\/jquery.placeholder.js"]},"question:widget\/ask\/search-relate\/search-relate.js":{"url":"https:\/\/iknowpc.bdimg.com\/static\/question\/widget\/ask\/search-relate\/search-relate.e492c4a.js","deps":["common:widget\/js\/util\/tangram\/tangram.js","common:widget\/js\/util\/log\/log.js"]},"common:widget\/js\/ui\/clipboard\/clipboard.min.js":{"pkg":"common:p4"},"question:widget\/read-opt\/img-preview\/preview.js":{"url":"https:\/\/iknowpc.bdimg.com\/static\/question\/widget\/read-opt\/img-preview\/preview.6faca97.js","deps":["common:widget\/lib\/jquery\/jquery.js","common:widget\/js\/ui\/dialog\/dialog.js","common:widget\/js\/logic\/category\/category.js","common:widget\/js\/util\/log\/log.js"]},"question:widget\/ask\/pc-exp\/ask-img.js":{"url":"https:\/\/iknowpc.bdimg.com\/static\/question\/widget\/ask\/pc-exp\/ask-img.60c4015.js","deps":["common:widget\/lib\/jquery\/jquery.js","common:widget\/js\/ui\/dialog\/dialog.js","common:widget\/js\/logic\/category\/category.js","common:widget\/js\/util\/log\/log.js","question:widget\/read-opt\/img-preview\/preview.js"]},"question:widget\/newbest\/asker.js":{"url":"https:\/\/iknowpc.bdimg.com\/static\/question\/widget\/newbest\/asker.204521d.js","deps":["common:widget\/js\/util\/tangram\/tangram.js","common:widget\/js\/logic\/submit\/submit.js","common:widget\/js\/ui\/dialog\/dialog.js"]},"question:widget\/newbest\/correct-answer.js":{"url":"https:\/\/iknowpc.bdimg.com\/static\/question\/widget\/newbest\/correct-answer.af22178.js","deps":["common:widget\/js\/logic\/ueditor\/ueditor.js","common:widget\/js\/util\/log\/log.js","common:widget\/lib\/jquery\/jquery.js","common:widget\/js\/util\/event\/event.js","common:widget\/js\/logic\/submit\/submit.js"]},"question:widget\/js\/mavin-msg\/mavin-msg.js":{"pkg":"question:p8","deps":["common:widget\/lib\/jquery\/jquery.js","common:widget\/js\/util\/event\/event.js","common:widget\/js\/ui\/base\/base.js","common:widget\/js\/logic\/msg\/msg.js"]},"question:widget\/user\/mavin\/mavin.js":{"pkg":"question:p8","deps":["common:widget\/js\/util\/tangram\/tangram.js","common:widget\/js\/util\/log\/log.js","common:widget\/js\/ui\/carousel\/carousel.js"]},"question:widget\/link-union\/link-union.js":{"url":"https:\/\/iknowpc.bdimg.com\/static\/question\/widget\/link-union\/link-union.6b28d66.js","deps":["common:widget\/js\/util\/tangram\/tangram.js"]},"question:widget\/mask\/mask.es.js":{"url":"https:\/\/iknowpc.bdimg.com\/static\/question\/widget\/mask\/mask.es.7e867d7.js","deps":["common:widget\/js\/util\/event\/event.js","common:widget\/lib\/jquery\/jquery.js"]},"question:widget\/view\/accusation\/accusation.es.js":{"url":"https:\/\/iknowpc.bdimg.com\/static\/question\/widget\/view\/accusation\/accusation.es.5da5952.js","deps":["common:widget\/js\/util\/event\/event.js","common:widget\/lib\/jquery\/jquery.js","common:widget\/js\/ui\/dialog\/dialog.js"]},"question:widget\/js\/video\/video.js":{"url":"https:\/\/iknowpc.bdimg.com\/static\/question\/widget\/js\/video\/video.fd48204.js","deps":["common:widget\/js\/util\/tangram\/tangram.js","common:widget\/js\/util\/suffix-str\/suffix-str.js","common:widget\/js\/util\/log\/log.js"]},"common:widget\/upgrade-tips\/upgrade-tips.js":{"url":"https:\/\/iknowpc.bdimg.com\/static\/common\/widget\/upgrade-tips\/upgrade-tips.aae0426.js","deps":["common:widget\/js\/util\/tangram\/tangram.js","common:widget\/js\/util\/log\/log.js","common:widget\/js\/util\/https\/https.js"]},"question:widget\/js\/submitjump\/submitjump.js":{"pkg":"question:p5","deps":["common:widget\/js\/util\/tangram\/tangram.js","common:widget\/js\/util\/event\/event.js","common:widget\/js\/logic\/submit\/submit.js","common:widget\/js\/util\/log\/log.js","common:widget\/js\/ui\/dialog\/dialog.js"]},"question:widget\/js\/accuse\/accuse.js":{"pkg":"question:p5","deps":["common:widget\/js\/util\/tangram\/tangram.js","common:widget\/js\/util\/log\/log.js","common:widget\/js\/util\/event\/event.js","common:widget\/js\/logic\/login\/login.js","common:widget\/js\/ui\/dialog\/dialog.js"]},"question:widget\/user\/info\/basic\/basic.js":{"pkg":"question:p5","deps":["common:widget\/lib\/jquery\/jquery.js","common:widget\/js\/util\/event\/event.js","common:widget\/js\/logic\/set-avatar\/set-avatar.js","common:widget\/js\/logic\/sign-in\/sign-in.js"]},"question:widget\/user\/info\/bind-mobile\/tip.js":{"pkg":"question:p5","deps":["common:widget\/js\/util\/tangram\/tangram.js","common:widget\/js\/util\/log\/log.js"]},"question:widget\/user\/info\/daily\/daily.js":{"pkg":"question:p5","deps":["common:widget\/js\/util\/tangram\/tangram.js","common:widget\/js\/util\/event\/event.js","common:widget\/js\/util\/log\/log.js","common:widget\/js\/ui\/carousel\/carousel.js"]},"question:widget\/user\/info\/privilege\/privilege.js":{"pkg":"question:p5","deps":["common:widget\/js\/util\/tangram\/tangram.js","common:widget\/js\/util\/event\/event.js","common:widget\/js\/ui\/tip\/tip.js"]},"question:widget\/user\/info\/signin\/signin.js":{"pkg":"question:p5","deps":["common:widget\/js\/util\/tangram\/tangram.js","common:widget\/js\/ui\/base\/base.js","common:widget\/js\/ui\/tip\/tip.js","common:widget\/js\/ui\/dialog\/dialog.js","common:widget\/js\/logic\/submit\/submit.js","common:widget\/js\/util\/event\/event.js","common:widget\/lib\/jquery.ui\/jquery.ui.datepicker.js"]},"question:widget\/user\/info\/untreated-ask\/untreated-ask.js":{"pkg":"question:p5","deps":["common:widget\/lib\/jquery\/jquery.js"]},"question:widget\/js\/psask-bindsms\/psask-bindsms.js":{"url":"https:\/\/iknowpc.bdimg.com\/static\/question\/widget\/js\/psask-bindsms\/psask-bindsms.54809c5.js","deps":["common:widget\/js\/util\/tangram\/tangram.js","common:widget\/js\/util\/log\/log.js","common:widget\/js\/util\/event\/event.js","common:widget\/js\/ui\/dialog\/dialog.js","common:widget\/js\/logic\/phone-bind\/phone-bind.js"]},"question:widget\/js\/admin\/officialAdmin\/officialAdmin.js":{"url":"https:\/\/iknowpc.bdimg.com\/static\/question\/widget\/js\/admin\/officialAdmin\/officialAdmin.2a686ea.js","deps":["common:widget\/js\/util\/tangram\/tangram.js","common:widget\/js\/ui\/dialog\/dialog.js","common:widget\/js\/logic\/category\/category.js","common:widget\/js\/util\/event\/event.js"]},"question:widget\/js\/set-tag\/set-tag.js":{"url":"https:\/\/iknowpc.bdimg.com\/static\/question\/widget\/js\/set-tag\/set-tag.3937dc6.js","deps":["common:widget\/js\/util\/tangram\/tangram.js","common:widget\/js\/util\/event\/event.js","common:widget\/js\/ui\/base\/base.js","common:widget\/js\/util\/template\/template.js","common:widget\/js\/ui\/dialog\/dialog.js","common:widget\/js\/ui\/scrollbar\/scrollbar.js","common:widget\/js\/util\/tangram\/string.js"]},"question:widget\/js\/admin\/userAdmin\/userAdmin.js":{"url":"https:\/\/iknowpc.bdimg.com\/static\/question\/widget\/js\/admin\/userAdmin\/userAdmin.e677042.js","deps":["common:widget\/js\/util\/tangram\/tangram.js","common:widget\/js\/util\/event\/event.js","common:widget\/js\/ui\/dialog\/dialog.js","common:widget\/js\/logic\/category\/category.js","question:widget\/js\/set-tag\/set-tag.js","common:widget\/lib\/jquery.placeholder\/jquery.placeholder.js"]},"question:widget\/js\/unloginask-bindsms\/unloginask-bindsms.js":{"url":"https:\/\/iknowpc.bdimg.com\/static\/question\/widget\/js\/unloginask-bindsms\/unloginask-bindsms.bdb48c8.js","deps":["common:widget\/js\/util\/tangram\/tangram.js","common:widget\/js\/util\/log\/log.js","common:widget\/js\/util\/event\/event.js","common:widget\/js\/ui\/dialog\/dialog.js"]},"question:widget\/js\/audio\/jplayer\/jplayer.js":{"url":"https:\/\/iknowpc.bdimg.com\/static\/question\/widget\/js\/audio\/jplayer\/jplayer.64dcc3a.js","deps":["common:widget\/lib\/jquery\/jquery.js"]},"question:widget\/js\/audio\/audio.js":{"url":"https:\/\/iknowpc.bdimg.com\/static\/question\/widget\/js\/audio\/audio.24f8577.js","deps":["common:widget\/js\/util\/tangram\/tangram.js","common:widget\/js\/util\/log\/log.js","question:widget\/js\/audio\/jplayer\/jplayer.js"]}},"pkg":{"common:p0":{"url":"https:\/\/iknowpc.bdimg.com\/static\/common\/pkg\/more.d4bc6a6.js","has":["common:widget\/bottom-ask\/bottom-ask.js","common:widget\/css\/fonts\/iconfont.min.js","common:widget\/footer-new\/footer-new.js","common:widget\/footer\/footer.js","common:widget\/header-metis\/header.js","common:widget\/menu\/menu.js","common:widget\/search-box-new\/search-box-new.js","common:widget\/userbar-renew\/userbar-renew.js"]},"common:p4":{"url":"https:\/\/iknowpc.bdimg.com\/static\/common\/pkg\/clipboard.0c05b89.js","has":["common:widget\/js\/ui\/clipboard\/clipboard.min.js"]},"question:p8":{"url":"https:\/\/iknowpc.bdimg.com\/static\/question\/pkg\/mavin.668b3e8.js","has":["question:widget\/js\/mavin-msg\/mavin-msg.js","question:widget\/user\/mavin\/mavin.js"]},"question:p5":{"url":"https:\/\/iknowpc.bdimg.com\/static\/question\/pkg\/login.eb014bd.js","has":["question:widget\/js\/submitjump\/submitjump.js","question:widget\/js\/accuse\/accuse.js","question:widget\/user\/info\/basic\/basic.js","question:widget\/user\/info\/bind-mobile\/tip.js","question:widget\/user\/info\/daily\/daily.js","question:widget\/user\/info\/privilege\/privilege.js","question:widget\/user\/info\/signin\/signin.js","question:widget\/user\/info\/untreated-ask\/untreated-ask.js"]}}});</script><script type="text/javascript" src="https://iknowpc.bdimg.com/static/common/pkg/lib.33719ed.js"></script><script type="text/javascript" src="https://iknowpc.bdimg.com/static/common/pkg/commonjs.7d4557a.js"></script><script type="text/javascript" src="https://iknowpc.bdimg.com/static/common/pkg/ueditor.62029f8.js"></script><script type="text/javascript" src="https://iknowpc.bdimg.com/static/question/widget/ask/editor-guide/editor-guide.e836d69.js"></script><script type="text/javascript" src="https://iknowpc.bdimg.com/static/question/widget/js/app-guide/app-guide.f256fe5.js"></script><script type="text/javascript" src="https://iknowpc.bdimg.com/static/question/pkg/replyer.9f8f28e.js"></script><script type="text/javascript" src="https://iknowpc.bdimg.com/static/question/widget/mavin-statistics/mavin-statistics.c089f0a.js"></script><script type="text/javascript" src="https://iknowpc.bdimg.com/static/question/widget/image-scale/image-scale.0d9da5a.js"></script><script type="text/javascript" src="https://iknowpc.bdimg.com/static/question/widget/js/answer-dialog/answer-dialog.090b047.js"></script><script type="text/javascript" src="https://iknowpc.bdimg.com/static/question/widget/js/ck/ck.854102c.js"></script><script type="text/javascript" src="https://iknowpc.bdimg.com/static/question/pkg/module.9b5ec1c.js"></script><script type="text/javascript" src="https://iknowpc.bdimg.com/static/question/widget/newbest/newbest.462acd3.js"></script><script type="text/javascript">
+!function(){var F = (window.__IKNOW_GLOBAL__ || window).F;var require = (window.__IKNOW_GLOBAL__ || window).require;    require.async(['common:widget/userbar-renew/userbar-renew']);
+}();
+!function(){var F = (window.__IKNOW_GLOBAL__ || window).F;var require = (window.__IKNOW_GLOBAL__ || window).require;    require.async(['common:widget/search-box-new/search-box-new']);
+}();
+!function(){var F = (window.__IKNOW_GLOBAL__ || window).F;var require = (window.__IKNOW_GLOBAL__ || window).require;    require.async(['common:widget/menu/menu'], function(menu){
+    	menu.init();
+    });
+    // ����menu����ʱ����
+    alog && alog('speed.set', 'c_menu', +new Date); alog.fire && alog.fire("mark");
+}();
+!function(){var F = (window.__IKNOW_GLOBAL__ || window).F;var require = (window.__IKNOW_GLOBAL__ || window).require;	require.async(['question:widget/top-nav-bar/top-nav-bar']);
+}();
+!function(){var F = (window.__IKNOW_GLOBAL__ || window).F;var require = (window.__IKNOW_GLOBAL__ || window).require;    require.async(['question:widget/ask/search-relate/search-relate'], function (searchRelate) {
+        searchRelate.init();
+    });
+}();
+!function(){var F = (window.__IKNOW_GLOBAL__ || window).F;var require = (window.__IKNOW_GLOBAL__ || window).require;            F.context('page').relatedKeyword = 1;
+        F.context('feedback', '1');
+    F.context('springActivityShow', '0')
+    require.async(['question:widget/ask/replyer/replyer']);
+}();
+!function(){var F = (window.__IKNOW_GLOBAL__ || window).F;var require = (window.__IKNOW_GLOBAL__ || window).require;    require.async(['question:widget/ask/ask'], function(ask){
+        ask.init({
+            picture: []
+        });
+    });
+    require.async(['question:widget/ask/pc-exp/ask-img']);
+}();
+!function(){var F = (window.__IKNOW_GLOBAL__ || window).F;var require = (window.__IKNOW_GLOBAL__ || window).require;    require.async(['question:widget/value-comment/value-comment'],function(vc){
+        vc.init('2900928668');
+    });
+}();
+!function(){var F = (window.__IKNOW_GLOBAL__ || window).F;var require = (window.__IKNOW_GLOBAL__ || window).require;	require.async(['question:widget/newbest/correct-answer'], function(correctAnswer) {
+		correctAnswer.init();
+	});
+}();
+!function(){var F = (window.__IKNOW_GLOBAL__ || window).F;var require = (window.__IKNOW_GLOBAL__ || window).require;	require.async(['common:widget/lib/jquery/jquery','common:widget/js/util/log/log'], function($, log) {
+
+
+		if ($('.wgt-best .best-text .answer-expand').size() != 0) {
+			log.addKey({
+				answer_expand_show: 1
+			});
+		}
+        $(".wgt-best .best-text").on('click', ".answer-expand", function(e) {
+        	$(this).hide();
+        	$(".wgt-best .best-text .answer-expand-content").hide();
+        	$(".wgt-best .best-text .answer-collapse-content").show();
+        	$(".wgt-best .best-text .answer-collapse").css('display', 'block');
+        	log.send({page:'question',pos:'qb-detail-expand-btn-click'});
+        });
+        $(".wgt-best .best-text").on('click', ".answer-collapse", function(e) {
+        	$(this).hide();
+        	$(".wgt-best .best-text .answer-collapse-content").hide();
+        	$(".wgt-best .best-text .answer-expand-content").show();
+        	$(".wgt-best .best-text .answer-expand").show();
+        });
+
+
+
+    });
+}();
+!function(){var F = (window.__IKNOW_GLOBAL__ || window).F;var require = (window.__IKNOW_GLOBAL__ || window).require;    require.async(['question:widget/value-comment/value-comment'],function(vc){
+        vc.init('2901083855');
+    });
+}();
+!function(){var F = (window.__IKNOW_GLOBAL__ || window).F;var require = (window.__IKNOW_GLOBAL__ || window).require;    require.async(['question:widget/answers/answers'], function(ans){
+                ans.insertBest();
+            });
+}();
+!function(){var F = (window.__IKNOW_GLOBAL__ || window).F;var require = (window.__IKNOW_GLOBAL__ || window).require;    require.async(['question:widget/hao123/hao123'], function (app) {
+        app.init({
+            word: ''
+        });
+    });
+}();
+!function(){var F = (window.__IKNOW_GLOBAL__ || window).F;var require = (window.__IKNOW_GLOBAL__ || window).require;    require.async(['common:widget/js/util/log/log'], function(log) {
+        // չ����������PV��ps����֪����ǰ��ô��ôд��related_search_show�����Ѷ����Ҳ�����һ���ģ�
+        log.addKey({related_search_show: '1'});
+        // Ϊ���Ƽ�չ��pv
+        log.addKey({bottom_union: '1'});
+    });
+}();
+!function(){var F = (window.__IKNOW_GLOBAL__ || window).F;var require = (window.__IKNOW_GLOBAL__ || window).require;    require.async(['question:widget/related/related'], function(rel){
+        rel({
+            isRelatedLog: true,
+                    });
+    });
+}();
+!function(){var F = (window.__IKNOW_GLOBAL__ || window).F;var require = (window.__IKNOW_GLOBAL__ || window).require;    require.async(['question:widget/push/push'], function(push){
+        push.init();
+    });
+}();
+!function(){var F = (window.__IKNOW_GLOBAL__ || window).F;var require = (window.__IKNOW_GLOBAL__ || window).require;	F.context('mavinList', [{"avatarSrc":"https:\/\/gss0.baidu.com\/9vo3dSag_xI4khGko9WTAnF6hhy\/zhidao\/wh%3D900%2C1200\/sign=7a2aa4c073f0f736d8ab44083a659f28\/55e736d12f2eb9384a1ee84dde628535e5dd6f1a.jpg","uid":"3412103694","realname":"\u5317\u4eac\u5e02\u5c45\u4f4f\u8bc1\u670d\u52a1\u4e2d\u5fc3","uname":"\u5317\u4eac\u5c45\u4f4f\u8bc1\u4e2d\u5fc3","job":"\u673a\u6784","company":"\u5317\u4eac\u5e02\u5c45\u4f4f\u8bc1\u670d\u52a1\u4e2d\u5fc3","answerNum":"103","cid":"104","linkHref":"https:\/\/zhidao.baidu.com\/business\/profile?id=18896"},{"avatarSrc":"https:\/\/gss0.baidu.com\/-Po3dSag_xI4khGko9WTAnF6hhy\/zhidao\/wh%3D221%2C221%3B\/sign=1aeb07cfb819ebc4c02d7e9bb017e3ce\/a2cc7cd98d1001e95adb2ca5b30e7bec55e797b0.jpg","uid":"811828159","realname":"\u5c71\u4e1c\u4fa8\u7f51demo","uname":"\u5b7a\u6893","job":"\u673a\u6784","company":"\u5c71\u4e1c\u4fa8\u7f51demo","answerNum":"17","cid":"104","linkHref":"https:\/\/zhidao.baidu.com\/business\/profile?id=18938"},{"avatarSrc":"https:\/\/gss0.baidu.com\/9fo3dSag_xI4khGko9WTAnF6hhy\/zhidao\/wh%3D900%2C1200\/sign=ee7f963ca8cc7cd9fa783cd009310d0e\/8b82b9014a90f603315d11963212b31bb151ed76.jpg","uid":"103646411","realname":"\u9f50\u5bb6\u7f51","uname":"georgefdd","job":"\u673a\u6784","company":"\u9f50\u5bb6\u7f51","answerNum":"21375","cid":"104","linkHref":"https:\/\/zhidao.baidu.com\/business\/profile?id=19688"}]);
+	require.async(['question:widget/user/mavin/mavin'], function(mavin){
+        mavin.init();
+    });
+}();
+!function(){var F = (window.__IKNOW_GLOBAL__ || window).F;var require = (window.__IKNOW_GLOBAL__ || window).require;			require.async(['common:widget/js/logic/union/union'], function(union){
+				// args[2, 3]�Զ��嶨��ʹ��, common:union��������ֻ�ܵ���һ��;
+				union('968278', 'union-asplu', {
+					'zdquery'       : '',
+					'zdclassid' : '973',
+					'zhidaoqid'         : '1500394157498848939'
+				});
+			});
+		}();
+!function(){var F = (window.__IKNOW_GLOBAL__ || window).F;var require = (window.__IKNOW_GLOBAL__ || window).require;    require.async(['question:widget/ad-right/ad-right']);
+}();
+!function(){var F = (window.__IKNOW_GLOBAL__ || window).F;var require = (window.__IKNOW_GLOBAL__ || window).require;    require.async(['common:widget/js/util/tangram/tangram','question:widget/link-union/link-union'], function($, LU) {
+        LU.init({
+            newbest: {"2900928668":{"id":2900928668,"qid":"1500394157498848939","encode_qid":"1500394157498848939","threadId":"11603714673","deleted":0,"isBest":0,"isHighQuality":1,"isExcellent":0,"isRecommend":1,"isSpecial":0,"c_timestamp":1524093537,"createTime":null,"recommendCanceled":0,"hasImage":1,"hasComment":0,"isFromHelp":0,"isFromWap":0,"valueNum":6,"valueBadNum":0,"refContent":"","content":null,"contentText":null,"mapUrl":"","contentRich":null,"contentRichOrig":null,"imgUrl":[["http:\/\/e.hiphotos.baidu.com\/zhidao\/pic\/item\/3b87e950352ac65cb4f8e323f7f2b21192138ae5.jpg","http:\/\/e.hiphotos.baidu.com\/zhidao\/wh%3D600%2C800\/sign=29717b7345540923aa3c6b78a268fd31\/3b87e950352ac65cb4f8e323f7f2b21192138ae5.jpg","http:\/\/e.hiphotos.baidu.com\/zhidao\/wh%3D450%2C600\/sign=f28e2238dd09b3deebeaec6cf98f40b7\/3b87e950352ac65cb4f8e323f7f2b21192138ae5.jpg"],["http:\/\/b.hiphotos.baidu.com\/zhidao\/pic\/item\/0b46f21fbe096b637f67da0000338744ebf8ac60.jpg","http:\/\/b.hiphotos.baidu.com\/zhidao\/wh%3D600%2C800\/sign=1213fea2d962853592b5da27a0df5afe\/0b46f21fbe096b637f67da0000338744ebf8ac60.jpg","http:\/\/b.hiphotos.baidu.com\/zhidao\/wh%3D450%2C600\/sign=6e52218f7ac6a7efb973a022c8ca8367\/0b46f21fbe096b637f67da0000338744ebf8ac60.jpg"],["http:\/\/g.hiphotos.baidu.com\/zhidao\/pic\/item\/0df3d7ca7bcb0a46741c0f696763f6246b60afa0.jpg","http:\/\/g.hiphotos.baidu.com\/zhidao\/wh%3D600%2C800\/sign=b0d29e4eb5389b5038aae854b505c9e5\/0df3d7ca7bcb0a46741c0f696763f6246b60afa0.jpg","http:\/\/g.hiphotos.baidu.com\/zhidao\/wh%3D450%2C600\/sign=53613455e9dde711e7874bf292dfe22d\/0df3d7ca7bcb0a46741c0f696763f6246b60afa0.jpg"]],"fileName":[],"fileAttrs":[],"bit_pack":{"is_recommend":1,"wap_flag":0,"is_pic_contained":1,"media_flag":0,"help_flag":0,"anonymous":0,"is_really_anonymous":0,"level_new":1,"comment_flag":0,"in_mis":0,"auto_recommend":1,"content_rich_flag":1,"prior_flag":0,"hidden_flag":0,"rec_canceled_flag":0,"mis_flag":0,"file_flag":0,"read_flag":0,"is_challenge":0,"ikaudio_flag":0,"mavin_flag":0,"authentic_state":1,"is_compulsory_best":0},"ext_pack":{"mode_qtype":0,"mode_begintime":0,"reply_entry":"qb_none_none","op_uid":656986426,"authentic_time":1524093611,"authentic_uid":63197733,"isHQImport":0,"reco_time":1524102191},"import_id":0,"uscore":{"level":20,"sublevel":0,"good_rate":95,"icon_sysno":7,"sex":1},"inMis":0,"isHard":0,"value_rank":100001,"applyStatus":{"applyExcType":0,"applyNum":0},"area":1,"user":{"uid":656986426,"name":null,"imId":"3ad1b1f9d3eac3ced3c6d3c62827","isAnonymous":0,"isUnLogin":0,"isCurrentUser":0,"ipNum":432755969,"isNoUserName":0,"iconType":7,"sex":1,"isAuth":0,"isExpert":0,"isExpertImport":0,"isUserAdmin":1,"isFamous":0,"isMaster":0,"isFromTorch":0,"isOpenApp":0,"encodeUid":"3ad14069236f25705e792827","gradeIndex":20,"grAnswerNum":59528,"goodRate":95.454035245258,"carefield":[{"cid":1095,"cname":null}],"userAdminType":3,"userAdminLevel":15,"userAdminTitle":null,"selfDefinedPhoto":0,"isAppAuth":0,"mavin":{"career":null,"authLevel":3,"field":114101,"title":null,"avatar":"http:\/\/g.hiphotos.baidu.com\/zhidao\/wh%3D450%2C600\/sign=7577ad58f403918fd78435ce640d0aa1\/9f510fb30f2442a7cf63071dd243ad4bd113021c.jpg","isShowRealName":0,"realName":null,"answerNum":null,"adoptNum":null,"isDisplay":1,"isNew":1,"utype":0,"qualityNum":null,"helpNum":null,"praise":null,"major":1,"desc":null,"fields":[{"id":114101,"name":null}],"levelTitle":null,"levelDesc":null,"proLink":{"link":"https:\/\/vivaldi.club\/","title":null,"status":1,"createTime":1520327692,"mavinPassTime":"1419242405"},"replyLimit":0,"replyMaxNum":0,"isExpert":0}},"oldQid":1658845307,"relateWords":[],"type":"quality"}},
+            recommend: null,
+            answerList: [{"id":2901083855,"qid":"1500394157498848939","encode_qid":"1500394157498848939","threadId":"11604335421","deleted":0,"isBest":0,"isHighQuality":0,"isExcellent":0,"isRecommend":0,"isSpecial":0,"c_timestamp":1524121696,"createTime":null,"recommendCanceled":0,"hasImage":0,"hasComment":0,"isFromHelp":0,"isFromWap":0,"valueNum":0,"valueBadNum":0,"refContent":"","content":null,"contentText":null,"mapUrl":"","contentRich":"","contentRichOrig":"","imgUrl":[],"fileName":[],"fileAttrs":[],"bit_pack":{"is_recommend":0,"wap_flag":0,"is_pic_contained":0,"media_flag":0,"help_flag":0,"anonymous":1,"is_really_anonymous":0,"level_new":1,"comment_flag":0,"in_mis":0,"auto_recommend":0,"content_rich_flag":0,"prior_flag":0,"hidden_flag":0,"rec_canceled_flag":0,"mis_flag":0,"file_flag":0,"read_flag":0,"is_challenge":0,"ikaudio_flag":0,"mavin_flag":0,"authentic_state":0,"is_compulsory_best":0},"ext_pack":{"mode_qtype":0,"mode_begintime":0,"reply_entry":"home_new_content","op_uid":0,"from_feedback":1},"import_id":0,"uscore":{"level":3,"sublevel":0,"good_rate":44,"icon_sysno":0,"sex":1},"inMis":0,"isHard":0,"value_rank":-1,"applyStatus":{"applyExcType":5,"applyNum":0},"area":2,"user":{"uid":1564808658,"name":null,"imId":"d2153731f7c8c1a6c5aec8cbcdf8455d","isAnonymous":1,"isUnLogin":0,"isCurrentUser":0,"ipNum":2915209277,"isNoUserName":0,"iconType":6,"sex":1,"isAuth":0,"isExpert":0,"isExpertImport":0,"isUserAdmin":0,"isFamous":0,"isMaster":0,"isFromTorch":0,"isOpenApp":0,"encodeUid":"d2154069236f25705e79455d","gradeIndex":3,"grAnswerNum":4,"goodRate":44.444444444444,"selfDefinedPhoto":0,"isAppAuth":0},"oldQid":1658845307,"relateWords":[]}],
+            askQid: '1500394157498848939'
+        });
+        $.getScript("https://gh.bdstatic.com/static/gh/js/ll/m_word.js");
+    });
+}();
+!function(){var F = (window.__IKNOW_GLOBAL__ || window).F;var require = (window.__IKNOW_GLOBAL__ || window).require;require.async(['question:widget/image-scale/image-scale'], function(imageScale){
+    imageScale.init('.ikqb_img');
+});
+}();
+!function(){var F = (window.__IKNOW_GLOBAL__ || window).F;var require = (window.__IKNOW_GLOBAL__ || window).require;require.async(['question:widget/mask/mask.es'], function(mask) {
+    mask.init();
+});
+}();
+!function(){var F = (window.__IKNOW_GLOBAL__ || window).F;var require = (window.__IKNOW_GLOBAL__ || window).require;require.async(['question:widget/view/accusation/accusation.es'], function(accusation) {
+    accusation.init();
+});
+}();
+!function(){var F = (window.__IKNOW_GLOBAL__ || window).F;var require = (window.__IKNOW_GLOBAL__ || window).require;    require('common:widget/js/logic/ie-prompt/ie-prompt');
+    require.async(['common:widget/footer-new/footer-new'], function(footer) {
+        footer.init();
+    });
+}();
+!function(){var F = (window.__IKNOW_GLOBAL__ || window).F;var require = (window.__IKNOW_GLOBAL__ || window).require;require.async(['common:widget/js/util/tangram/tangram','common:widget/js/util/log/log','common:widget/js/util/event/event','common:widget/js/ui/dialog/dialog','question:widget/js/file/file','question:widget/js/video/video','common:widget/js/ui/tip/tip','question:widget/ask/share/share','common:widget/js/util/https/https','common:widget/js/util/store/store','question:widget/mavin-statistics/mavin-statistics'], function($, log, ec, Dialog, File, Video, Tip, share, https, store, mavinStatistics){
+
+        // ���QBҳ�û��ɲ���ʱ��
+        alog && alog('speed.set', 'drt', +new Date);
+                        require.async(['question:widget/js/accuse/accuse'], function(accuse){
+                    accuse.init({ target: '#wgt-ask .accuse-area', response: 'wgt-ask', accusetype: 0 });
+                    if (!$.isEmptyObject(F.context('answers'))){
+
+                        accuse.init({ target: '.wgt-best .accuse-area',	response: 'wgt-best', accusetype: 1 });
+                        accuse.init({ target: '#wgt-answers .accuse-area', response: 'answer', accusetype: 1 });
+                    }
+                });
+                                            
+            log.addKey({
+                qbleftdown: $('.qbleftdown').find('li').size(),
+                qbrightdown:$('.qbrightdown').find('.r').size()
+            });
+            if ( $( '.qbleftdown a' ).size() ) {
+                log.addKey({
+                    ec_ads: '2',
+                    ec_ads_count: $('.qbleftdown').find('a.ec_ad_title, span.ec_qad_title, a.EC_ad_title').size()
+                });
+                $('.qbleftdown a').click(function(){
+                    var $parent = $( this ).parent();
+                    if ( this.id || this.className == 'EC_ad_title'
+                        || $(this).hasClass('ec_ik220_adtitle')
+                        || $(this).hasClass('ec_ik220_desc')
+                        || $parent.hasClass( 'EC_ads_answer' )
+                        || this.className == 'EC_ads_listurl'
+                        || this.className == 'ec_ad_title'
+                        || $parent.hasClass('ec_qad_title')
+                        || $parent.hasClass('ec_qad_answerer') ) {
+                        log.send({
+                            type: 2014,
+                            evtType: 'click',
+                            pos: 'ec_ads'
+                        });
+                    }
+                });
+            }
+            require.async(['question:widget/js/card/card'], function(card){
+                $('.user-name').each(function(index, item){
+                    new card({ target: item, type: 'normal' });
+                });
+                $('.mavin-name').each(function(index, item){
+                    new card({target: item, type: 'mavin' });
+                });
+                $('.opendev-name').each(function(index, item){
+                    new card({target: item, type: 'opendev'});
+                });
+                $('.uadmin-a').each(function(index, item) {
+                    new card({target: item, type: 'uadminIcon'});
+                });
+                $('.business-name').each(function(index, item){
+                    new card({target: item, type: 'business' });
+                });
+                $('.quality-business-name').each(function (index, item) {
+                    new card({target: item, type: 'qbusiness'});
+                });
+            });
+            $('.fixed-ask-e').click(function(e){
+                e.preventDefault();
+                var username = $(this).attr('username');
+                require.async(['common:widget/js/logic/iask/iask'], function(fixedAsk){
+                    fixedAsk(username);
+                });
+            });
+            $('.replyask-shrink a').click(function(e){
+                e.preventDefault();
+                var flag = this.innerHTML.indexOf('����׷��') != -1;
+
+                var dl = $(this).html( flag ? '<i class="i-incline-up"></i>����׷��' : '<i class="i-incline-down"></i>����׷��' ).parent().prevAll('.replyask');
+                $($.makeArray(dl).reverse().slice(flag ? 0 : 3, dl.length)).css('display', flag ? 'block' : 'none');
+            });
+            $('.replyask-box').each(function (index, item) {
+                if ($(item).find('.replyask-shrink').size() == 0) {
+                    if ($(item).find('.ask-supply').size() == 2) {
+                        // $(item).find('.replyask').last().find('.ask-supply-line').hide();
+                    }
+                    if ($(item).find('.ask-supply').size() == 1) {
+                        // $(item).find('.ask-supply-line').hide();
+                    }
+                    // $(item).find('.ask-supply-line').last().hide();
+                }
+            });
+            if($('.thunder-wrap').size()){
+                require.async(['question:widget/js/thunder/thunder'], function(thunder){
+                    $(function(){
+                        thunder.init();
+                    });
+                });
+            }
+            $.each(F.context('answers'), function(index, item){
+                if(item.user){
+                    if (item.user.isFromBusiness > 0) {
+                        $.ajax({
+                            url: '/business/submit/onbusinessbrowse',
+                            type: 'POST',
+                            dataType: 'json',
+                            data: {
+                                businessId: item.user.business.businessId,
+                                page: '1',
+                                token: F.context('businessToken'),
+                                qid: F.context('page')['qid']
+                            }
+                        })
+                        .done(function () {
+                        })
+                        .fail(function () {
+                        });
+                    }
+                }
+            });
+
+            // �мҹ����ͳ��
+            mavinStatistics.bindEvent();
+
+            // �м�pvͳ��
+            mavinStatistics.scan();
+            $('.qbrightdown a').click(function(){
+                log.send({
+                    type: 2014,
+                    qid: F.context('page')['qid'],
+                    area: 'medical-right-txt-ads',
+                    action: 'click'
+                });
+            });
+            if($('ikaudio').size()){
+                log.addKey({
+                    'audio' : 1
+                });
+
+                require.async(['question:widget/js/audio/audio'], function(audio){
+                    audio.init();
+                });
+            }
+            require.async(['question:widget/js/comment/comment'], function(comm){
+                comm.getCount();
+            });
+            $('.recommend-text, .best-text, .answer-text, .replyask-content').each(function(i, answerText){
+                $(answerText).find('pre[t="code"]').each(function(i, pre){
+                    var loadSyntax = function(){
+                        SyntaxHighlighter(pre);
+                    };
+
+                    $(pre).text($(pre).html($(pre).html().replace(/<br\s*\/?>/ig, '##IK_LINEBREAK##')).text().split('##IK_LINEBREAK##').join('\n'));
+
+                    $(pre).addClass('brush:'+$(pre).attr('l')+';toolbar:false;');
+                    if (window.SyntaxHighlighter) {
+                        SyntaxHighlighter.highlight(pre);
+                        $(answerText).find('.syntaxhighlighter .code .line').each(function(index, line){
+                            $(answerText).find('.syntaxhighlighter .gutter .line').eq(index).height($(line).height());
+                        });
+                    } else {
+                        var sioUrl = https.autoTrans('http://img.iknow.bdimg.com/libs/SyntaxHighlighter/shCore.min.js');
+                        $.sio(sioUrl).callByBrowser(function(){
+                            SyntaxHighlighter.defaults['quick-code'] = false;
+                            SyntaxHighlighter.config.stripBrs = true;
+                            SyntaxHighlighter.highlight(pre);
+                            $(answerText).find('.syntaxhighlighter .code .line').each(function(index, line){
+                                $(answerText).find('.syntaxhighlighter .gutter .line').eq(index).height($(line).height());
+                            });
+                        });
+                    }
+                });
+
+                $(answerText).find('ikvideo').each(function(i, video){
+                    var id = 'VIDEO_' + $.id(),
+                        src = $(video).attr('src'),
+                        sid;
+
+                    var container = $('<div/>').attr('id', id).insertBefore($(video));
+                    if (src.indexOf('v.baidu.com') > -1 ) {
+                        container.html('<iframe src="'+src+'" frameborder=0 scrolling="no" width="'+$(video).attr('width')+'" height="'+$(video).attr('height')+'" class="'+$(video).attr('class')+'"></iframe>');
+                        return;
+                    }
+                    if (src.indexOf('youku') > -1 && (sid = src.match(/sid\/(.*?)[\?\/]/))) {
+                        if (sid[1]) {
+                            src = 'http://player.youku.com/player.php/sid/'+sid[1]+'/v.swf';
+                        }
+                    }
+
+                    container.html('<embed src="'+src+'" allowFullScreen="true" quality="high" width="'+$(video).attr('width')+'" height="'+$(video).attr('height')+'" align="'+$(video).attr('align')+'" allowScriptAccess="never" type="application/x-shockwave-flash"></embed>');
+                });
+            });
+
+                var scrollLogged = false;
+        var middleLogged = false;
+        var bottomLogged = false;
+
+        $(document).on('scroll', function () {
+            var docViewTop = $(window).scrollTop();
+            var docViewBottom = docViewTop + $(window).height();
+
+            var $cmsScroll = $('#cms-scroll');
+
+            if ($cmsScroll.length > 0) {
+                var scrollElemTop = $cmsScroll.offset().top;
+
+                if (!scrollLogged && (scrollElemTop > docViewTop && scrollElemTop < docViewBottom)) {
+                    scrollLogged = true;
+                    log.send({
+                        area: 'quesion_right_scoll'
+                    });
+                }
+            }
+
+            var $cmsCompany = $('#cms-company');
+
+            if ($cmsScroll.length > 0) {
+                var middleElemTop = $cmsScroll.offset().top;
+
+                if (!middleLogged && (middleElemTop > docViewTop && middleElemTop < docViewBottom)) {
+                    middleLogged = true;
+                    log.send({
+                        area: 'question_middle_ads'
+                    });
+                }
+            }
+
+            var $knowledge = $('.knowledge');
+
+            if ($knowledge.length > 0) {
+                var bottomElemTop = $knowledge.offset().top;
+
+                if (!bottomLogged && (bottomElemTop > docViewTop && bottomElemTop < docViewBottom)) {
+                    bottomLogged = true;
+                    log.send({
+                        area: 'question_knowledge'
+                    });
+                }
+            }
+        });
+        require.async(['common:widget/js/ui/lazyload/lazyload'], function(lazyload){
+            $('.wgt-replyer-best .avatar-48 a, .wgt-replyer-best .avatar-66 a, .wgt-replyer-special .avatar-66 a,.wgt-replyer-best .avatar-69 a, .wgt-replyer-best .avatar-70 a, .wgt-replyer-best .avatar-66 a, #cms-company a').lazyload();
+        });
+        $('.ikqb-map').each(function(index, item) {
+            var ifreamObj = $("<iframe/>").attr({
+                frameborder: '0'
+                ,width:"430"
+                ,height:"310"
+                ,style: 'display:none;'
+                ,className: 'answer-map'
+            }),
+            tmpsrc = $(item).attr("map") || $(item).attr("src");
+            
+            var iframeSrc = !/ueditor\/dialogs\/map/i.test(tmpsrc) ? '//zhidao.baidu.com/html/map' + tmpsrc.replace(/^iknow/i, '') : tmpsrc;
+
+            ifreamObj.attr('src', iframeSrc);
+
+            $(item).before(ifreamObj).remove();
+            ifreamObj.after(
+                $("<p/>").addClass('f-aid').html("��������Դ�ڰٶȵ�ͼ�����ս���԰ٶȵ�ͼ��������Ϊ׼��")
+            ).show();
+        });
+        log.addKey({
+            qb_struct_type: ''
+        });
+        if ($('video.edui-faked-video').size() > 0) {
+            Video.init();
+        }
+        require.async(['common:widget/js/logic/ut/ut'], function(UT){
+            UT.start(['userbar','header','wgt-ask','answer-editor','wgt-answers']);
+        });
+
+        File.init();
+
+        logPV();
+        if (F.context('user')['isUserAdmin'] != '1'){
+            require.async(['question:widget/js/select-search/select-search'], function(A){
+                A.init();
+            });
+        }
+        log.init({key:2014, query: 'body',action:'click'});
+        function logPV(){
+            var logOptions = {
+                screen: parseInt($('body').height()/$(window).height()),
+                cid: F.context('page')['cid'],
+                view: F.context('page').isView,
+                cidTop: F.context('page')['cidTop'],
+                cidMid: F.context('page')['cidMid'],
+                refer: document.referrer,
+                adsEids: F.context('page').adsAll.adsEids.join(','),
+                create_time: F.context('page').createTime || 0,
+                asker_uid: F.context('page').uid || 0,
+                viewer_uid: F.context('user').uid || 0
+            };
+
+            log.addKey({
+                evaSampling: 0,
+                qid: F.context('page')['qid']
+            });
+
+            if (F.context('page').relateQids) {
+                logOptions.relateQids = F.context('page').relateQids;
+            }
+
+            if (F.context('page').relateTopicQids) {
+                logOptions.relateTopicQids = F.context('page').relateTopicQids;
+            }
+            if ($('.classinfo').length) {
+                log.addKey({'classinfo': 1});
+            }
+            var uadminIcon = $('.uadmin-a');
+            var uadminIconSize = uadminIcon.length;
+            if (uadminIconSize) {
+                logOptions.uadminIconNum = uadminIconSize;
+            }
+
+            log.addKey(logOptions);
+        }
+        var loc_ans = $.url.getQueryValue(location.href, 'loc_ans');
+        if(!loc_ans) {
+            var myAnswerList = $('.wgt-best .answer-mine, .wgt-recommend .answer-mine, .wgt-special .answer-mine'),
+                myAnswer = null;
+            if(myAnswerList.size()){
+                myAnswer = myAnswerList.first();
+                setTimeout(function(){
+                    $(document).scrollTop(myAnswer.offset().top - 10);
+                }, 200);
+            }
+        }else {
+            var locAnswerList = $('.wgt-best .answer, .wgt-recommend .answer, .wgt-special .answer'),
+                locAnswer = null;
+            locAnswerList.each(function(index, item) {
+                if($(item).attr("id").indexOf(loc_ans) != -1) {
+                    locAnswer = $(item);
+                }
+            });
+            if(locAnswer) {
+                setTimeout(function(){
+                    $(document).scrollTop(locAnswer.parent().offset().top - 10);
+                }, 200);
+            }
+        }
+        var grid68  = $('.qb-content'),
+            qid = F.context('page')['qid'];
+        $.each({
+            'qb-content'            : '.q-content a@',
+            'qb-supply-content'     : '.q-supply-content a@',
+            'qb-best-text'          : '.wgt-best .best-text a@',
+            'qb-special-bast-text'  : '.wgt-special .best-text a@',
+            'qb-recommend-text'     : '.wgt-recommend .recommend-text a@',
+            'qb-answer-text'        : '.answer-text a@',
+            'qb-replyask-ask'       : '.ask+dd a',
+            'qb-replyask-reply'     : '.reply+dd a',
+            'qb-best-thank'         : '.thank pre a',
+            'qb-answer-refer'       : '.answer-refer a'
+        }, function(key, val){
+            var aLink = grid68.find( val.replace(/\@$/, '[title!="����鿴��ͼ"]') )
+                        .not('.app-keyword,.inner-link')
+                        .filter(function(){
+                            return this.getAttribute('href').match(/^http/i) && this.innerHTML != '' && !$(this).closest('.ed2k-wrap').size() && !$(this).closest('.thunder-wrap').size()
+                        });
+            aLink.click(function(){
+                log.send({
+                    'type'  : 2014,
+                    'page'  : 'question',
+                    'qid'   : qid,
+                    'area'  : key,
+                    'action': 'linkClick',
+                    'text'  : this.getAttribute('href'),
+                    'host'  : this.getAttribute('href').split('/')[2]
+                });
+            });
+            grid68.find( val.replace(/\@$/, '') ).attr('rel', 'nofollow');
+        });
+
+                            $(document).on('click', '.ikqb_img_alink', function(evt){
+                if($.browser.msie&&$.browser.version==6){
+                    return false;
+                }
+                var imgTarget = $(this).find('img'),
+                    imgBigSrc = $(this).attr('href'),
+                    maxWidth = $(this).parent('p').outerWidth(),
+                    imgSmallSrc = imgTarget.attr('esrc'),
+                    sourceWidth = imgTarget.width(),
+                    sourceHeight = imgTarget.height();
+
+                if(imgTarget.hasClass('img_show')){
+                    imgTarget.attr('src',imgBigSrc);
+                    if(!imgTarget.hasClass('ikqb_img')){
+                        imgTarget.removeClass('ikqb_img');
+                        imgTarget.animate({
+                            'width':'100%'
+                        },500);
+                    }else{
+                        imgTarget.animate({
+                            'maxWidth':'500px',
+                            'maxHeight':'340px'
+                        },500);
+                    }
+                    imgTarget.removeClass('img_show');
+                }else{
+                    $(this).append('<i class="ikqb_img_loading"></i>');
+                    var bigImg = new Image();
+                    bigImg.onload = function(){
+                        imgTarget.attr('src',imgBigSrc);
+                        if(sourceWidth == bigImg.width){
+                            imgTarget.removeClass('ikqb_img');
+                            imgTarget.animate({
+                                'width':'120%'
+                            },500);
+                        }else{
+                            imgTarget.animate({
+                                'maxWidth':bigImg.width>maxWidth?maxWidth:bigImg.width,
+                                'maxHeight':bigImg.height
+                            },500);
+                        }
+                        imgTarget.addClass('img_show');
+                        $('.ikqb_img_loading').remove();
+                    }
+                    bigImg.src = imgBigSrc;
+                }
+                evt.preventDefault();
+            });
+        
+    // �����мһش�����tooltip
+    var mavinTips = [];
+    var mavinTimeout = [];
+    $('.mavin-reply-icon').each(function (index) {
+        var me = this;
+        var mavinLevelTitle = $(this).attr('data-title');
+        var mavinMajor = $(this).attr('data-major');
+        var content = '<p class="mavin-reply-tip"><span class="mr-5">[' + mavinLevelTitle + ']</span>�����<span class="enhance">ʵ����֤</span>+<span class="enhance">��ҵ��֤</span>';
+        if (mavinMajor == 1) {
+            content += '+<span class="enhance">רҵ��֤</span>';
+        }
+        content += '</p>';
+
+        $(this).mouseenter(function (e) {
+            $('div[role="tooltip"]').hide();
+            clearTimeout(mavinTimeout[index]);
+            mavinTimeout[index] = setTimeout(function () {
+
+                if (!mavinTips[index]) {
+                    mavinTips[index] = new Tip({
+                        'target': me,
+                        'tooltipClass' : 'tip-white',
+                        'autoDispose': false,
+                        'direction': 'top',
+                        'content': content,
+                        'position': {
+                            my: 'left-20 top'
+                        }
+                    });
+                }
+                mavinTips[index].show();
+            }, 70);
+
+        }).mouseleave(function (e) {
+            mavinTimeout[index] = setTimeout(function () {
+                mavinTips[index] && mavinTips[ index ].hide();
+            }, 70);
+        });
+    });
+    function jumpShare() {
+
+        if ($('.jump-top-box').size() != 0) {
+            // �������ض����������б��˳��
+            $('.jump-top-box').find('.jump-top').before($('.jump-top-box').find('.jump-task-list'));
+
+            // ���������
+            var jumpShare = [
+                '<div class="jump-share">',
+                    '<div class="jump-share-tit">����</div>',
+                    '<div class="share-area"></div>',
+                '</div>'
+            ].join('');
+
+            $('.jump-top-box').find('.jump-task-list').before(jumpShare);
+
+            share.init({
+                target: $('.jump-share .share-area'),
+                pageUrl: 'http://zhidao.baidu.com/question/' + F.context('page').qid,
+                title: document.title,
+                pos: 'rightSilde',
+                logOpt: {
+                    module: 'question',
+                    page: 'qb',
+                    project: 'new-qb-share',
+                    postion: 'new-share-right'
+                }
+            });
+            // ������мҹ����ң��������
+            if ($('.jump-top-box').find('.jump-goto-mavin').size()) {
+                $('.jump-top-box').find('.jump-share').before($('.jump-top-box').find('.jump-goto-mavin'));
+            }
+            jumpTimer && clearInterval(jumpTimer);
+        }
+    }
+
+    var jumpTimer = setInterval(function () {
+        jumpShare();
+    }, 1000);
+
+});
+
+
+}();
+!function(){var F = (window.__IKNOW_GLOBAL__ || window).F;var require = (window.__IKNOW_GLOBAL__ || window).require;    require.async(['common:widget/js/util/tangram/tangram','common:widget/js/util/log/log','common:widget/js/util/event/event','common:widget/js/ui/dialog/dialog','question:widget/js/file/file','question:widget/js/video/video','common:widget/js/ui/tip/tip','question:widget/ask/share/share','common:widget/js/util/https/https','question:widget/dom-ready/dom-ready'], function($, log, ec, Dialog, File, Video, Tip, share, https, domReady) {
+        domReady.init();
+    });
+}();
+!function(){var F = (window.__IKNOW_GLOBAL__ || window).F;var require = (window.__IKNOW_GLOBAL__ || window).require;								                				require.async(['common:widget/js/logic/dom-ready/dom-ready'], function(D){ D.init([]) });
+            }();
+</script>
+<script type="text/javascript">
+    require.async(['common:widget/lib/jquery/jquery'], function ($) {
+        if (!/chrome|firefox|safari|msie 10|rsv:11|msie [89]/i.test(navigator.userAgent)) {
+            return;
+        }
+
+        window.BaiduHttps = window.BaiduHttps || {};
+        window.BaiduHttps.callbacks = function (data) {
+            if (data && data.s === 0) {
+                window.supportHttps = 1;
+                setTimeout(function () {
+                    $('a[href^="http://www.baidu.com/s?"]').each(function (index, item) {
+                        var link = $(item).attr('href');
+                        if (~link.indexOf('?wd=') || ~link.indexOf('&wd=')) {
+                            link = link.replace(/^http/, 'https');
+                            $(item).attr('href', link);
+                        }
+                    });
+                }, 2000);
+            }
+        };
+
+        var script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.src = 'https://www.baidu.com/con?from=zhidao';
+        document.body.appendChild(script);
+    });
+</script>
+
+
+</html>
