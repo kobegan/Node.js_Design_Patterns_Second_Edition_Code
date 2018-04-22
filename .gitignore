@@ -1,6 +1,7 @@
 # Project folders to exclude
 node_modules/
 .bin/
+.idea
 
 # Windows image file caches
 Thumbs.db
