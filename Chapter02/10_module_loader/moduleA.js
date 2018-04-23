@@ -1,6 +1,6 @@
 "use strict";
 
-const moduleB = require('./moduleB');
+const moduleB = require('./moduleB.js');
 
 module.exports = {
   run: () => {

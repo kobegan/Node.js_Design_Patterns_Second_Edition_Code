@@ -4,6 +4,13 @@ const fs = require('fs');
 //save the original require
 let originalRequire = require;
 
+function loadMudule(filename, module, require) {
+    const wrappedSrt = `(function(module, exports, require){
+        ${fs.readFileSync(filename, 'utf-8')}
+    })(module, module.exports, require)`;
+    eval(wrappedSrc);
+}
+
 function loadModule(filename, module, require) {
   const wrappedSrc =
     `(function(module, exports, require) {

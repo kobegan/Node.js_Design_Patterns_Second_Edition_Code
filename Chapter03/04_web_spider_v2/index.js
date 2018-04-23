@@ -72,7 +72,7 @@ function spider(url, nesting, callback) {
   });
 }
 
-spider(process.argv[2], 2, (err) => {
+spider(process.argv[2], 1, (err) => {
   if(err) {
     console.log(err);
     process.exit();

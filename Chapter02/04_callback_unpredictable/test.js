@@ -5,7 +5,8 @@ const cache = {};
 function inconsistentRead(filename, callback) {
   if(cache[filename]) {
     // invoked synchronously
-    callback(cache[filename]);
+    //process.nextTick(callback.bind(cache[filename]));
+    process.nextTick(() => callback(cache[filename]));
   } else {
     // asynchronous function
     fs.readFile(filename, 'utf8', (err, data) => {
